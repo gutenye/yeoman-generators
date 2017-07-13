@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+export PORT=3001
+export WS_PORT=3002
+export DATABASE_URL="sqlite://db.sqlite/app"
+#export DATABASE_URL="postgres://localhost/<%=project%>"
+export PATH="node_modules/.bin:$PATH"
+export NODE_PATH="src:$NODE_PATH"
+
+main() {
+  nodemon src/server.js --exec babel-node
+}
+
+seeds-dev() {
+  babel-node scripts/seeds-dev.js
+}
+
+test() {
+  jest --watch
+}
+
+coverage() {
+  jest --coverage
+}
+
+case "$1" in
+  "" ) main ;;
+  seeds-dev ) seeds-dev ;;
+  t | test ) test ;;
+  coverage ) coverage ;;
+esac

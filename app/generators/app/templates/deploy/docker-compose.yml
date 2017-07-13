@@ -1,0 +1,37 @@
+version: "2"
+services:
+  web:
+    image: registry.cn-hangzhou.aliyuncs.com/<%=username%>/<%=project%>-web
+    environment:
+      - VIRTUAL_HOST=<%=project%>.guten.me
+      - LETSENCRYPT_HOST=<%=project%>.guten.me
+      - LETSENCRYPT_EMAIL=ywzhaifei@gmail.com
+    volumes:
+      - ./uploads:/app/uploads
+    links:
+      - server
+    network_mode: bridge
+    restart: always
+
+  server:
+    image: registry.cn-hangzhou.aliyuncs.com/<%=username%>/<%=project%>-server
+    volumes:
+      - ./rc.js:/app/src/rc.js
+      - ./uploads:/app/uploads
+    links:
+      - db
+    network_mode: bridge
+    restart: always
+
+  db:
+    image: postgres
+    volumes:
+      - "./db-init:/docker-entrypoint-initdb.d"
+      - "./db:/var/lib/postgresql/data"
+    environment:
+      POSTGRES_DB: "app"
+      POSTGRES_INITDB_ARGS: ""
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "root"
+    restart: always
+    network_mode: bridge

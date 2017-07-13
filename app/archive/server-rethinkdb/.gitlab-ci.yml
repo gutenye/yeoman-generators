@@ -1,0 +1,23 @@
+stages:
+  - build-image
+  - deploy
+variables:
+  GIT_SSL_NO_VERIFY: "1"
+
+build:image:
+  stage: build-image
+  script:
+    - docker build -t notes-server .
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD $DOCKER_REGISTRY
+    - docker tag notes-server $DOCKER_REGISTRY/gutenye/notes-server
+    - docker push $DOCKER_REGISTRY/gutenye/notes-server
+  image: docker
+
+deploy:
+  stage: deploy
+  script:
+    - echo "$SSH_PRIVATE_KEY" > /root/.ssh/id_rsa && chmod 600 /root/.ssh/id_rsa
+    - ssh $SERVER 'cd /app/<%=project%> && docker-compose pull'
+    - ssh $SERVER 'cd /app/<%=project%> && docker-compose up -d && docker-compose restart'
+  image: gutenye/deploy
+

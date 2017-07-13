@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+main() {
+  rm -r lib/* 2>/dev/null
+  babel src -d lib --watch --ignore __tests__ --copy-files
+}
+
+build() {
+  rm -r lib/* 2>/dev/null
+  babel src -d lib --ignore __tests__ --copy-files
+}
+
+case "$1" in
+  "" ) main ;;
+  b | build) build ;;
+esac

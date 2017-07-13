@@ -1,0 +1,20 @@
+{
+  "name": "<%=project%>",
+  "version": "0.0.1",
+  "description": "FIXME",
+  "main": "src/index.js",
+  "repository": "<%=username%>/<%=project%>",
+  "license": "MIT",
+  "scripts": {
+    "prepublishOnly": "./ake build"
+  },
+  "devDependencies": {
+    "babel-eslint": "^0.0.0",
+    "eslint": "^0.0.0",
+    "eslint-config-guten": "^0.0.0",
+    "eslint-plugin-import": "^0.0.0"
+  },
+  "eslintConfig": {
+    "extends": "guten"
+  }
+}

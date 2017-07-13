@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+export PORT=3000
+export PATH="node_modules/.bin:$PATH"
+
+main() {
+  npm start
+}
+
+build() {
+  npm run build
+}
+
+test() {
+  npm test
+}
+
+case "$1" in
+  '' ) main ;;
+  b | build ) build ;;
+  t | test ) test ;;
+esac

@@ -1,0 +1,59 @@
+{
+  "name": "web",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "test": "react-scripts test",
+    "lint": "npm run lint:js & npm run lint:css",
+    "lint:js": "eslint src/**/*.js",
+    "lint:css": "scss-lint"
+  },
+  "eslintConfig": {
+    "extends": "guten-react"
+  },
+  "dependencies": {
+    "@gutenye/react-icon-base": "^0.0.0",
+    "api-error-handler": "^0.0.0",
+    "apollo-client": "^0.0.0",
+    "frisbee": "^0.0.0",
+    "classnames": "^0.0.0",
+    "graphql-tag": "^0.0.0",
+    "lodash": "^0.0.0",
+    "mobx": "^0.0.0",
+    "mobx-react": "^0.0.0",
+    "mobx-react-devtools": "^0.0.0",
+    "normalize.css": "^0.0.0",
+    "react": "^0.0.0",
+    "react-apollo": "^0.0.0",
+    "react-dom": "^0.0.0",
+    "react-helmet": "^0.0.0",
+    "react-icons": "^0.0.0",
+    "react-router-dom": "^0.0.0",
+    "react-tap-event-plugin": "^0.0.0",
+    "recompose": "^0.0.0",
+    "styled-components": "next"
+  },
+  "devDependencies": {
+    "@gutenye/react-scripts": "^0.0.0",
+    "flow-bin": "^0.0.0",
+    "flow-typed": "^0.0.0",
+    "eslint": "^0.0.0",
+    "babel-eslint": "^0.0.0",
+    "eslint-config-guten-react": "^0.0.0",
+    "eslint-config-prettier": "^0.0.0",
+    "eslint-plugin-import": "^0.0.0",
+    "eslint-plugin-react": "^0.0.0"
+  },
+  "proxy": "http://localhost:3001",
+  "proxy2": {
+    "/api": {
+      "target": "http://localhost:3001",
+      "pathRewrite": {
+        "^/api" : ""
+      }
+    }
+  }
+}

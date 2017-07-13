@@ -1,0 +1,59 @@
+stages:
+  - build
+  - image
+  - deploy
+  - mirror
+variables:
+  GIT_SSL_NO_VERIFY: "1"
+
+server-image:
+  stage: image
+  only:
+    - server
+    - all
+  script:
+    - cd server
+    - build-image <%=project%>
+  image: gutenye/docker
+
+web-build:
+  stage: build
+  only:
+    - web
+    - all
+  script:
+    - cd web
+    - yarn
+    - npm run build
+  artifacts:
+    paths:
+      - web/build
+  image: <%=username%>/node
+
+web-image:
+  stage: image
+  only:
+    - web
+    - all
+  script:
+    - cd web
+    - build-image <%=project%>
+  image: gutenye/docker
+
+deploy:
+  stage: deploy
+  only:
+    - web
+    - server
+    - all
+  script:
+    - deploy <%=project%>
+  image: gutenye/deploy
+
+mirror:
+  stage: mirror
+  only:
+    - master
+  script:
+    - git-push git@gitlab.com:<%=username%>/<%=project%>.git
+  image: ilyasemenov/gitlab-ci-git-push

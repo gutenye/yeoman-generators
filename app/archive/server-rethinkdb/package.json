@@ -1,0 +1,33 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "babel-node src/app.js",
+    "dev": "babel-watch src/app.js",
+    "setup": "babel-node setup.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "",
+    "body-parser": "",
+    "express": "",
+    "express-jwt": "",
+    "graphql": "",
+    "graphql-tools": "",
+    "jsonwebtoken": "",
+    "lodash": "",
+    "passport": "",
+    "passport-github": "",
+    "rethinkdbdash": ""
+  },
+  "devDependencies": {
+    "babel-cli": "",
+    "babel-core": "",
+    "babel-preset-es2015": "",
+    "babel-preset-stage-0": "",
+    "babel-watch": ""
+  }
+}

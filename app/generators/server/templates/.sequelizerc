@@ -1,0 +1,6 @@
+module.exports = {
+  url: process.env.DATABASE_URL || 'postgres://localhost/erp',
+  'migrations-path': './src/migrations',
+  'seeders-path': './src/seeders',
+  'models-path': './src/models',
+}

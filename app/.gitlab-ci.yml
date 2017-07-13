@@ -1,0 +1,10 @@
+stages:
+  - mirror
+variables:
+  GIT_SSL_NO_VERIFY: "1"
+
+mirror:
+  stage: mirror
+  script:
+    - git-push git@gitlab.com:gutenye/generator-guten.git
+  image: ilyasemenov/gitlab-ci-git-push

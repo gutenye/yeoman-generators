@@ -1,0 +1,57 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "NODE_ENV=production NODE_PATH=\"src:$NODE_PATH\" node build/server.js",
+    "build": "babel src -d build",
+    "test": "jest",
+    "setup": "NODE_ENV=production NODE_PATH=\"src:$NODE_PATH\" babel-node scripts/setup.js",
+    "fix": "NODE_ENV=production NODE_PATH=\"src:$NODE_PATH\" babel-node scripts/fix.js",
+    "migrate": "NODE_ENV=production NODE_PATH=\"src:$NODE_PATH\" sequelize db:migrate",
+    "lint:js": "eslint src/**/*.js"
+  },
+  "jest": {
+    "modulePaths": [
+      "<rootDir>/src"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "guten"
+  },
+  "dependencies": {
+    "@gutenye/graphql-sequelize": "^0.0.0",
+    "express": "^0.0.0",
+    "graphql": "^0.0.0",
+    "graphql-relay": "^0.0.0",
+    "graphql-subscriptions": "^0.0.0",
+    "graphql-type-json": "^0.0.0",
+    "pg": "^0.0.0",
+    "sequelize": "^0.0.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-class-properties": "^0.0.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^0.0.0",
+    "babel-plugin-transform-flow-strip-types": "^0.0.0",
+    "babel-plugin-transform-object-rest-spread": "^0.0.0",
+    "babel-cli": "^0.0.0",
+    "babel-jest": "^0.0.0",
+    "bcrypt": "^0.0.0",
+    "flow-bin": "^0.0.0",
+    "jest": "^0.0.0",
+    "mockjs": "^0.0.0",
+    "nodemon": "^0.0.0",
+    "sequelize-cli": "^0.0.0",
+    "sqlite3": "^0.0.0",
+    "eslint-config-guten": "^0.0.0",
+    "babel-eslint": "^0.0.0",
+    "eslint": "^0.0.0",
+    "eslint-plugin-import": "^0.0.0"
+  },
+  "author": "",
+  "license": "ISC"
+}

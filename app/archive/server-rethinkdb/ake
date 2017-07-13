@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+main() {
+  PORT=4001 DB_HOST=localhost npm run dev
+}
+
+setup-db() {
+  DB_HOST=localhost npm run setup
+}
+
+case "$1" in
+  "" ) main ;;
+  setup ) setup ;;
+esac
