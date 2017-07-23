@@ -9,9 +9,17 @@
     "prepublishOnly": "./ake build"
   },
   "devDependencies": {
-    "eslint-config-guten": "^0.0.0"
+    "eslint-config-guten": "^0.0.0",
+    "jest": "^0.0.0",
+    "babel-jest": "^0.0.0"
   },
   "eslintConfig": {
     "extends": "guten"
+  },
+  "jest": {
+    "transform": {
+      "\\.js$": "babel-jest"
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTest.js"
   }
 }
