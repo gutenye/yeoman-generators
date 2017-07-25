@@ -4,10 +4,10 @@
 # ./ake deploy web
 # ./ake deploy all
 
-push() {
+deploy() {
   git push origin master:$1
 }
 
 case "$1" in
-  deploy ) push $2 ;;
+  deploy ) deploy $2 ;;
 esac

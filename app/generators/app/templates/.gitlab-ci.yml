@@ -24,7 +24,7 @@ web-build:
   script:
     - cd web
     - yarn
-    - npm run build
+    - yarn run build
   artifacts:
     paths:
       - web/build

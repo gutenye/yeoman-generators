@@ -6,6 +6,7 @@
   "repository": "<%=username%>/<%=project%>",
   "license": "MIT",
   "scripts": {
+    "test": "jest",
     "prepublishOnly": "./ake build"
   },
   "devDependencies": {
