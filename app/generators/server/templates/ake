@@ -28,4 +28,5 @@ case "$1" in
   seeds-dev ) seeds-dev ;;
   t | test ) test ;;
   coverage ) coverage ;;
+  deploy ) ../ake "$@" ;;
 esac

@@ -19,4 +19,5 @@ case "$1" in
   '' ) main ;;
   b | build ) build ;;
   t | test ) test ;;
+  deploy ) ../ake "$@" ;;
 esac

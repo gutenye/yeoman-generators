@@ -47,7 +47,7 @@ deploy:
     - server
     - all
   script:
-    - deploy <%=project%>
+    - deploy <%=project%> 23
   image: gutenye/deploy
 
 mirror:
