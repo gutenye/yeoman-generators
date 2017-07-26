@@ -5,9 +5,10 @@
 # ./ake deploy all
 
 deploy() {
-  git push origin master:$1
+  NAME=${NAME-$1}
+  git push origin master:$NAME
 }
 
 case "$1" in
-  deploy ) deploy $2 ;;
+  deploy ) shift; deploy "$@" ;;
 esac

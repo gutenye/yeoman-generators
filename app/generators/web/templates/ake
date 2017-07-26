@@ -2,6 +2,7 @@
 
 export PORT=3000
 export PATH="node_modules/.bin:$PATH"
+export NAME="web"
 
 main() {
   npm start
@@ -17,7 +18,7 @@ test() {
 
 case "$1" in
   '' ) main ;;
+  deploy ) ../ake "$@" ;;
   b | build ) build ;;
   t | test ) test ;;
-  deploy ) ../ake "$@" ;;
 esac

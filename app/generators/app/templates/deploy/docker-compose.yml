@@ -4,6 +4,7 @@ services:
     image: registry.cn-hangzhou.aliyuncs.com/<%=username%>/<%=project%>-web
     environment:
       - VIRTUAL_HOST=<%=project%>.guten.me
+      - EXPOSE=80
       - LETSENCRYPT_HOST=<%=project%>.guten.me
       - LETSENCRYPT_EMAIL=ywzhaifei@gmail.com
     volumes:
