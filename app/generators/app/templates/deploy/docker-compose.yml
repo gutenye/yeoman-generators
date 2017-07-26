@@ -11,7 +11,6 @@ services:
       - ./uploads:/app/uploads
     links:
       - server
-    network_mode: bridge
     restart: always
 
   server:
@@ -21,18 +20,21 @@ services:
       - ./uploads:/app/uploads
     links:
       - db
-    network_mode: bridge
     restart: always
 
   db:
     image: postgres
     volumes:
-      - "./db-init:/docker-entrypoint-initdb.d"
-      - "./db:/var/lib/postgresql/data"
+      - ./db-init:/docker-entrypoint-initdb.d
+      - ./db:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: "app"
       POSTGRES_INITDB_ARGS: ""
       POSTGRES_USER: "root"
       POSTGRES_PASSWORD: "root"
     restart: always
-    network_mode: bridge
+
+networks:
+  default:
+    external:
+      name: appsnet
