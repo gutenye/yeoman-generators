@@ -13,7 +13,7 @@ server-image:
     - all
   script:
     - cd server
-    - build-image <%=project%>
+    - build-image <%=username%>/<%=project%>-server
   image: gutenye/docker
 
 web-build:
@@ -37,7 +37,7 @@ web-image:
     - all
   script:
     - cd web
-    - build-image <%=project%>
+    - build-image <%=username%>/<%=project%>-web
   image: gutenye/docker
 
 deploy:
