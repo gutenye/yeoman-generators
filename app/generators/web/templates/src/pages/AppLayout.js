@@ -1,14 +1,13 @@
-import React, { withRouter, observer, styled } from 'vendor'
+import React, { observer, styled } from 'vendor'
 import DevTools from 'mobx-react-devtools'
 
-@withRouter
 @observer
 class AppLayout extends React.Component {
   render() {
-    var {props: {children}} = this
+    const { children } = this.props
     return (
       <Root>
-        <DevTools />
+        {process.env.NODE_ENV === 'development' && <DevTools />}
         {children}
       </Root>
     )
