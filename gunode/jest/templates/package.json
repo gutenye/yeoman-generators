@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^0.0.0",
+    "babel-jest": "^0.0.0"
+  },
+  "jest": {
+    "transform": {
+      "\\.js$": "babel-jest"
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTest.js"
+  }
+}

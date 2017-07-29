@@ -1,4 +1,5 @@
 const Generator = require('yeoman-generator')
+const { merge } = require('lodash')
 
 module.exports = class extends Generator {
   writing() {

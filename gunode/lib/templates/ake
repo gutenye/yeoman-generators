@@ -10,12 +10,7 @@ build() {
   babel src -d lib --ignore __tests__ --copy-files
 }
 
-test() {
-  jest --watch
-}
-
 case "$1" in
   "" ) main ;;
   b | build) build ;;
-  t | test ) test ;;
 esac
