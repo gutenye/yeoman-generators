@@ -1,14 +1,24 @@
 const Generator = require('yeoman-generator')
-const { merge } = require('lodash')
+
+global.pd = console.log.bind(console)
 
 module.exports = class extends Generator {
+  default() {
+    this.composeWith(require.resolve('../init'))
+    this.composeWith(require.resolve('../readmes'))
+    this.composeWith(require.resolve('../jest'))
+    this.composeWith(require.resolve('../eslint'))
+  }
+
   writing() {
-    const props = {
-      project: 'b',
-      username: 'a',
-      year: new Date().getFullYear(),
-      author: 'Guten Ye',
-    }
-    this.fs.copyTpl(`${this.templatePath()}/**/*`, this.destinationPath(), props, {}, {globOptions: {dot: true}})
+    this.props = this.config.getAll()
+
+    this.fs.copyTpl(
+      `${this.templatePath()}/**/*`,
+      this.destinationPath(),
+      this.props,
+      {},
+      { globOptions: { dot: true } }
+    )
   }
 }

@@ -2,4 +2,4 @@ test() {
   jest --watch
 }
 
- t | test ) jest ;;
+  t | test ) jest ;;

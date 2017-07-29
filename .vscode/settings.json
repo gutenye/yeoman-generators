@@ -1,0 +1,9 @@
+{
+  "editor.formatOnSave": true,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "files.exclude": {
+    "**/lib": false
+  }
+}
