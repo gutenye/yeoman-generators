@@ -1,15 +1,25 @@
-# variables
+### Web
 
-  project
-  username
+```
+$ cd web
+$ ln -s ../shared node_modules
+$ yarn
+$ ./ake
+```
 
 
-web/
-  .gitlab-ci.yml
-  docker/ Dockerfile nginx.conf
+### Server
 
-server/
-  .gitlab-ci.yml
-  docker/ Dockerfile
-  scripts/ setup.js fixtures.js  -> library
-  src/ -> library
+```
+$ cd server
+$ ln -s ../shared node_modules
+$ yarn
+
+$ cp ../deploy/rcExample.js src/rc.js
+$ mkdir -p uploads
+
+$ createdb erp
+$ ./ake seeds-dev
+
+$ ./ake
+```

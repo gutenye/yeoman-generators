@@ -1,15 +1,14 @@
 #!/usr/bin/env bash
 
-export PORT=3001
-export WS_PORT=3002
-export DATABASE_URL="sqlite://db.sqlite/app"
-#export DATABASE_URL="postgres://localhost/<%=project%>"
+export PORT=4001
+export WS_PORT=4002
+export DATABASE_URL=${DATABASE_URL-postgres://localhost/erp}
 export PATH="node_modules/.bin:$PATH"
 export NODE_PATH="src:$NODE_PATH"
-export NAME="server"
+export APP_ENV="node" # for gudatagen
 
 main() {
-  nodemon src/server.js --exec babel-node
+  nodemon --exec babel-node src/server.js
 }
 
 seeds-dev() {
@@ -29,5 +28,5 @@ case "$1" in
   deploy ) ../ake "$@" ;;
   seeds-dev ) seeds-dev ;;
   t | test ) test ;;
-  coverage ) coverage ;;
+  coverage ) converage ;;
 esac

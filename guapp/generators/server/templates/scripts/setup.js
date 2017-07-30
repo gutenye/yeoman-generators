@@ -1,24 +1,42 @@
-import '../src/vendor/pd'
-import { sequelize } from '../src/models'
+import '../src/models'
+import sequelize from '../src/vendor/sequelize'
 import bcrypt from 'bcrypt'
+import inquirer from 'inquirer'
 
-const force = process.env.DATABASE_FORCE
+global.pd = console.log.bind(console)
 
-function password(text) { return bcrypt.hashSync(text, 10) }
-
-const FIXTURES = {
-  'user': [
-    {username: 'admin', password: password('admin') },
-  ],
+function password(text) {
+  return bcrypt.hashSync(text, 10)
 }
 
-sequelize.sync({force}).then(() => {
-  if (sequelize.QUERY) sequelize.query(sequelize.QUERY)
-  Object.values(sequelize.models).filter(v => !!v.QUERY).map(v => sequelize.query(v.QUERY))
-  Promise.all(Object.keys(FIXTURES).map(key => sequelize.models[key].bulkCreate(FIXTURES[key])))
-  console.log('Setup database completed.')
-}).catch((err) => {
-  console.log('Setup database error:', err)
+const getFixtures = props => ({
+  user: [{ username: 'admin', password: password(props.password) }],
 })
 
-// vim: fdm=marker
+async function main() {
+  const answers = await inquirer.prompt([
+    {
+      name: 'password',
+      message: 'admin password:',
+      type: 'password',
+      validate: v => (v ? true : 'required'),
+    },
+  ])
+
+  const FIXTURES = getFixtures(answers)
+
+  await sequelize.sync()
+
+  await Object.keys(FIXTURES).reduce(
+    (p, key) =>
+      p.then(() => {
+        console.log(`>> Load ${key}`)
+        return sequelize.models[key].bulkCreate(FIXTURES[key])
+      }),
+    Promise.resolve()
+  )
+
+  process.quit()
+}
+
+main()

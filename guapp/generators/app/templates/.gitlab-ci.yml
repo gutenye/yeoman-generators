@@ -13,6 +13,7 @@ server-image:
     - all
   script:
     - cd server
+    - cp -r ../shared src/shared
     - build-image <%=username%>/<%=project%>-server
   image: gutenye/docker
 

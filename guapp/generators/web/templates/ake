@@ -2,7 +2,6 @@
 
 export PORT=3000
 export PATH="node_modules/.bin:$PATH"
-export NAME="web"
 
 main() {
   npm start
