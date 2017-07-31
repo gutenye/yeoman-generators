@@ -1,6 +1,25 @@
-install
+### Web
+
+```
+$ cd web
+$ ln -s ../shared node_modules
+$ yarn
+$ ./ake
+```
 
 
-ln -s `pwd` /usr/local/bin/node_modules
+### Server
 
-yo guten
+```
+$ cd server
+$ ln -s ../shared node_modules
+$ yarn
+
+$ cp ../deploy/rcExample.js src/rc.js
+$ mkdir -p uploads
+
+$ createdb erp
+$ ./ake seeds-dev
+
+$ ./ake
+```
