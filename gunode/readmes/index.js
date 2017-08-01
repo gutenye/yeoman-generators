@@ -1,19 +1,19 @@
+require('pdjs')
+require('yeoman-guten')
 const Generator = require('yeoman-generator')
+const { isEmpty } = require('lodash')
 
 module.exports = class extends Generator {
-  initialize() {
-    this.props = Object.assign(this.config.getAll(), {
-      year: new Date().getFullYear(),
-    })
+  prompting() {
+    if (isEmpty(this.config.getAll())) {
+      this.composeWith(require.resolve('../init'))
+    }
   }
 
   writing() {
-    this.fs.copyTpl(
-      `${this.templatePath()}/**/*`,
-      this.destinationPath(),
-      this.props,
-      {},
-      { globOptions: { dot: true } }
-    )
+    this.props = Object.assign(this.config.getAll(), {
+      year: new Date().getFullYear(),
+    })
+    this.copyTemplate(this.props)
   }
 }

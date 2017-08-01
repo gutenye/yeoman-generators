@@ -16,6 +16,6 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.yarnInstall(['jest', 'babel-jest', 'jest-transforms'], { dev: true })
+    this.yarnInstall(['react-styleguidist', 'react-frame-component'], { dev: true })
   }
 }

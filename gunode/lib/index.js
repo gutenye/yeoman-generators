@@ -1,6 +1,6 @@
+require('pdjs')
+require('yeoman-guten')
 const Generator = require('yeoman-generator')
-
-global.pd = console.log.bind(console)
 
 module.exports = class extends Generator {
   default() {
@@ -12,13 +12,6 @@ module.exports = class extends Generator {
 
   writing() {
     this.props = this.config.getAll()
-
-    this.fs.copyTpl(
-      `${this.templatePath()}/**/*`,
-      this.destinationPath(),
-      this.props,
-      {},
-      { globOptions: { dot: true } }
-    )
+    this.copyTemplate(this.props)
   }
 }

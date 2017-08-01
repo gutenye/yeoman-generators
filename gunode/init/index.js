@@ -1,3 +1,4 @@
+require('pdjs')
 const Generator = require('yeoman-generator')
 const { upperFirst, camelCase } = require('lodash')
 
