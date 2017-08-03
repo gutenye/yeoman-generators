@@ -29,6 +29,8 @@ module.exports = {
     },
   },
 
+  /*
+  webpackConfig: require('@gutenye/react-scripts/config/webpack.config.dev')
   webpackConfig: {
     module: {
       rules: [
@@ -37,4 +39,5 @@ module.exports = {
       ],
     }
   },
+  */
 }
