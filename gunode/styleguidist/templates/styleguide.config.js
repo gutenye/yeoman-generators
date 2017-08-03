@@ -3,10 +3,9 @@ const path = require('path')
 module.exports = {
   title: '<%=project%> docs',
   styleguideDir: 'build.docs',
-  template: 'docs/template.html',
-  require: ['./docs/docs.js', './docs/docs.css'],
+  template: './src/styleguide/template.html',
+  require: ['./src/styleguide/styleguide.js', './src/styleguide/styleguide.css'],
   serverPort: 4010,
-  assetsDir: 'static',
 
   // prettier-ignore
   sections: [
