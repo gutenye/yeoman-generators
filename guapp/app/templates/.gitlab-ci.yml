@@ -29,6 +29,7 @@ web-build:
   artifacts:
     paths:
       - web/build
+    expire_in: 1h
   image: <%=username%>/node
 
 web-image:
@@ -49,6 +50,8 @@ deploy:
     - all
   script:
     - deploy <%=project%> 23
+  environment:
+    name: production
   image: gutenye/deploy
 
 mirror:
