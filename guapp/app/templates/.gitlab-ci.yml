@@ -2,6 +2,7 @@ stages:
   - build
   - image
   - deploy
+  - docs
   - mirror
 variables:
   GIT_SSL_NO_VERIFY: "1"
@@ -53,6 +54,28 @@ deploy:
   environment:
     name: production
   image: gutenye/deploy
+
+pages:  
+  stage: docs
+  script:
+    - cd web
+    - yarn
+    - yarn run build:docs
+    - mv build.docs ../public/web
+    - cd -
+
+    - cd server
+    - yarn
+    - yarn run build:docs
+    - mv build.docs ../public/server
+    - cd -
+  artifacts:
+    paths:
+      - public
+    expire_in: 1h
+  only:
+    - master
+  image: gutenye/node
 
 mirror:
   stage: mirror
