@@ -6,7 +6,6 @@
 deploy() {
   [[ $1 == "all" ]] && names="web server" || names="$@"
   for name in $names; do
-    echo $name
     git push origin master:$name
   done
 }
