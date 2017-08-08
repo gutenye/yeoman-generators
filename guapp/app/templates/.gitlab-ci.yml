@@ -1,5 +1,4 @@
 stages:
-  - build
   - image
   - deploy
   - docs
@@ -7,37 +6,20 @@ stages:
 variables:
   GIT_SSL_NO_VERIFY: "1"
 
-server-image:
+server:
   stage: image
   only:
-    - server
-    - all
+    - master
   script:
     - cd server
     - cp -r ../shared src/shared
     - build-image <%=username%>/<%=project%>-server
   image: gutenye/docker
 
-web-build:
-  stage: build
-  only:
-    - web
-    - all
-  script:
-    - cd web
-    - yarn
-    - yarn run build
-  artifacts:
-    paths:
-      - web/build
-    expire_in: 1h
-  image: <%=username%>/node
-
-web-image:
+web:
   stage: image
   only:
-    - web
-    - all
+    - master
   script:
     - cd web
     - build-image <%=username%>/<%=project%>-web
@@ -46,13 +28,9 @@ web-image:
 deploy:
   stage: deploy
   only:
-    - web
-    - server
-    - all
+    - master
   script:
     - deploy <%=project%> 23
-  environment:
-    name: production
   image: gutenye/deploy
 
 pages:  
