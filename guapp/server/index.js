@@ -15,6 +15,8 @@ module.exports = class extends Generator {
 
   writing() {
     this.fs.copyTpl(`${this.templatePath()}/**`, this.destinationPath(), this.opts, {}, {globOptions: {dot: true}})
+    fs.symlinkSync('../docs', 'docs')
+    fs.symlinkSync('../shared', 'shared')
   }
 
   install() {
