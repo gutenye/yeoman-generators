@@ -4,12 +4,13 @@ const path = require('path')
 
 module.exports = class extends Generator {
   constructor(args, opts) {
-    const destinationRoot = process.cwd()
+    // .yo-rc.json is in parent directory, destinationRoot is auto changed, so we need change it back.
+    const cwd = process.cwd()
     super(args, opts)
-    this.opts = Object.assign({}, this.config.getAll(), {
-      subproject: path.basename(destinationRoot)
+    this.props = Object.assign({}, this.config.getAll(), {
+      subproject: path.basename(cwd)
     })
-    this.destinationRoot(destinationRoot)
+    this.destinationRoot(cwd)
   }
 
   writing() {

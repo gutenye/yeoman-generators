@@ -4,6 +4,8 @@
   "description": "Guten's generator",
   "main": "index.js",
   "dependencies": {
+    "lodash": "^4.17.4",
+    "pdjs": "^1.0.6",
     "yeoman-generator": "^1.1.1",
     "yeoman-guten": "^0.0.4"
   },

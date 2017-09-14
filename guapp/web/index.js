@@ -1,19 +1,20 @@
-global.pd = console.log.bind(console)
+require('pdjs')
 const Generator = require('yeoman-generator')
 const path = require('path')
 
 module.exports = class extends Generator {
   constructor(args, opts) {
-    const destinationRoot = process.cwd()
+    // .yo-rc.json is in parent directory, destinationRoot is auto changed, so we need change it back.
+    const cwd = process.cwd()
     super(args, opts)
-    this.opts = Object.assign({}, this.config.getAll(), {
-      subproject: path.basename(destinationRoot)
+    this.props = Object.assign({}, this.config.getAll(), {
+      subproject: path.basename(cwd)
     })
-    this.destinationRoot(destinationRoot)
+    this.destinationRoot(cwd)
   }
 
   writing() {
-    this.fs.copyTpl(`${this.templatePath()}/**`, this.destinationPath(), this.opts, {}, {globOptions: {dot: true}})
+    this.fs.copyTpl(`${this.templatePath()}/**`, this.destinationPath(), this.props, {}, {globOptions: {dot: true}})
   }
 
   install() {
@@ -22,7 +23,7 @@ module.exports = class extends Generator {
   }
 
   end() {
-    const {username, project, gitUrl, subproject} = this.opts
+    const {username, project, gitUrl, subproject} = this.props
     this.spawnCommandSync('git', ['init'])
     this.spawnCommandSync('git', ['remote', 'remove', 'origin'])
     this.spawnCommandSync('git', ['remote', 'add', 'origin', `${gitUrl}:${username}/${project}-${subproject}.git`])
