@@ -17,7 +17,9 @@
   "dependencies": {
     "@gutenye/react-icon-base": "^0.0.0",
     "api-error-handler": "^0.0.0",
-    "apollo-client": "^0.0.0",
+    "apollo-client-preset": "^0.0.0",
+    "apollo-link-context": "^0.0.0",
+    "apollo-link-error": "^0.0.0",
     "frisbee": "^0.0.0",
     "classnames": "^0.0.0",
     "graphql-tag": "^0.0.0",
@@ -26,6 +28,7 @@
     "mobx-react": "^0.0.0",
     "mobx-react-devtools": "^0.0.0",
     "normalize.css": "^0.0.0",
+    "prop-types": "^0.0.0",
     "react": "^0.0.0",
     "react-apollo": "^0.0.0",
     "react-dom": "^0.0.0",

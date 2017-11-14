@@ -16,8 +16,12 @@ module.exports = class extends Generator {
 
   writing() {
     this.fs.copyTpl(`${this.templatePath()}/**`, this.destinationPath(), this.props, {}, {globOptions: {dot: true}})
-    fs.symlinkSync('../docs', 'docs')
-    fs.symlinkSync('../shared', 'shared')
+    try {
+      fs.symlinkSync('../docs', 'docs')
+      fs.symlinkSync('../shared', 'shared')
+    } catch (e) {
+      // catch EEXIST
+    }
   }
 
   install() {

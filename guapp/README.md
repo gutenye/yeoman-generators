@@ -1,12 +1,18 @@
 ## USAGE
 
+For new project
+
 ```
-$ mkdir APP; cd APP
-$ yo guapp:base
-$ mkdir web; cd web
-$ yo guapp:web
-$ mkdir server; cd server
-$ yo guapp:server
+$ mkdir APP; cd APP; yo guapp:base
+$ mkdir web; cd web; yo guapp:web
+$ mkdir server; cd server; yo guapp:server
+```
+
+For existing project
+
+```
+$ yo guapp:init                       # generate .yo-rc.json
+$ mkdir web; cd web; yo guapp:web
 ```
 
 ## Hack
