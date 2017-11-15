@@ -23,10 +23,24 @@ coverage() {
   jest --coverage
 }
 
+link() {
+  mkdir -p node_modules
+  (cd node_modules && ln -s ../guserver/packages/* .)
+}
+
+build-docs() {
+  mkdir -p build.docs
+  babel-node scripts/gen-schema-text.js
+  graphdoc -s ./build.docs/admin.graphql -o build.docs/admin
+  graphdoc -s ./build.docs/store.graphql -o build.docs/store
+}
+
 case "$1" in
   "" ) main ;;
   deploy ) ../ake "$@" ;;
   seeds-dev ) seeds-dev ;;
   t | test ) test ;;
   coverage ) converage ;;
+  link ) link ;;
+  build:docs ) build-docs ;;
 esac

@@ -1,13 +1,7 @@
 // @flow
-import Sequelize from 'sequelize'
-import rc from '../rc'
+import * as q from './queryUtils'
 import { resolver as _resolver } from '@gutenye/graphql-sequelize'
 import { isNil, omitBy } from 'lodash'
-import * as a from './queryUtils'
-import * as t from 'sequelize'
-export { t, a }
-
-export const sequelize = new Sequelize(rc.db.url)
 
 /*
  * - pagination: (page: Int, limit: Int)
@@ -24,13 +18,18 @@ export const sequelize = new Sequelize(rc.db.url)
  *
  * query(gql, {variables: {limit: null|undefined}})
  */
-export function resolver(model: any, _before: any, after: any, options: any = {}): any {
+export default function resolver(
+  model: any,
+  _before: any,
+  after: any,
+  options: any = {}
+): any {
   const before = async (query, args, context, info) => {
     try {
       query.where = query.where || {}
       args = omitBy(args, isNil)
 
-      query = a.pagination({defaultLimit: 10})(query, args)
+      query = q.pagination({ defaultLimit: 10 })(query, args)
 
       if (_before) {
         query = await _before(query, args, context, info)
@@ -39,7 +38,8 @@ export function resolver(model: any, _before: any, after: any, options: any = {}
       return query
     } catch (e) {
       console.error(e)
+      return null
     }
   }
-  return _resolver(model, {before, after, ...options})
+  return _resolver(model, { before, after, ...options })
 }

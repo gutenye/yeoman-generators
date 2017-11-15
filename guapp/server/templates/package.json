@@ -6,10 +6,23 @@
   "scripts": {
     "start": "NODE_ENV=production NODE_PATH=\"lib:$NODE_PATH\" node lib/server.js",
     "build": "babel src -d lib --exclude __tests__",
+    "build:docs": "./ake build:docs",
     "test": "jest",
     "setup": "NODE_ENV=production NODE_PATH=\"src:$NODE_PATH\" babel-node scripts/setup.js",
-    "migrate": "NODE_ENV=production NODE_PATH=\"src:$NODE_PATH\" babel-node scripts/migrate.js",
-    "lint:js": "eslint src/**/*.js"
+    "migrate": "NODE_ENV=production NODE_PATH=\"src:$NODE_PATH\" babel-node scripts/migrate.js"
+  },
+  "jest": {
+    "modulePaths": [
+      "<rootDir>/src"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "guten"
+    ]
   },
   "dependencies": {
     "@gutenye/graphql-sequelize": "^0.0.0",
@@ -18,6 +31,9 @@
     "graphql-relay": "^0.0.0",
     "graphql-subscriptions": "^0.0.0",
     "graphql-type-json": "^0.0.0",
+    "guserver": "^0.0.0",
+    "guserver-auth-magic": "^0.0.0",
+    "guserver-schema-mini": "^0.0.0",
     "pg": "^0.0.0",
     "sequelize": "^0.0.0"
   },
@@ -39,17 +55,6 @@
     "babel-eslint": "^0.0.0",
     "eslint": "^0.0.0",
     "eslint-plugin-import": "^0.0.0"
-  },
-  "eslintConfig": {
-    "extends": "guten"
-  },
-  "jest": {
-    "modulePaths": [
-      "<rootDir>/src"
-    ],
-    "collectCoverageFrom": [
-      "src/**/*.js"
-    ]
   },
   "author": "",
   "license": "ISC"

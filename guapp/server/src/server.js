@@ -1,13 +1,12 @@
 import startServer from 'guserver'
+import db from './db'
 import schema from './schema'
 import apis from './apis'
 import auth from './auth'
 
-const app = {
+startServer({
+  db,
   schema,
   auth,
-  apis,
-  namespace: '',
-}
-
-startServer(app)
+  apis
+})
