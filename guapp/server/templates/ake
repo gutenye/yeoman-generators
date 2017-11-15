@@ -2,7 +2,7 @@
 
 export PORT=4001
 export WS_PORT=4002
-export DATABASE_URL=${DATABASE_URL-postgres://localhost/erp}
+export DATABASE_URL=${DATABASE_URL-postgres://localhost/<%=project%>}
 export PATH="node_modules/.bin:$PATH"
 export NODE_PATH="src:$NODE_PATH"
 export APP_ENV="node" # for gudatagen
