@@ -1,5 +1,5 @@
-import 'normalize.css'
-import './App.css'
+//import 'normalize.css'
+import './App.css.js'
 import React from 'react'
 import PropTypes from 'prop-types'
 import theme from './theme'
@@ -16,6 +16,7 @@ import LoginPage from './pages/Auth/LoginPage'
 import LoginOAuthTokenPage from './pages/Auth/LoginOAuthTokenPage'
 import AppLayout from './pages/AppLayout'
 import TestPage from './pages/TestPage'
+import AppDesign from './AppDesign'
 
 export default class App extends React.Component {
   static childContextTypes = {
@@ -38,6 +39,7 @@ export default class App extends React.Component {
       <ThemeProvider theme={theme}>
       <Router history={history}>
         <Switch>
+          <Route path="/design" component={AppDesign} />
           <Route path='/test' component={TestPage} />
           <Route path='/login' component={LoginPage} />
           <Route path='/login-oauth-token' component={LoginOAuthTokenPage} />

@@ -23,6 +23,7 @@
     "frisbee": "^0.0.0",
     "classnames": "^0.0.0",
     "graphql-tag": "^0.0.0",
+    "gureact": "^0.0.0",
     "lodash": "^0.0.0",
     "mobx": "^0.0.0",
     "mobx-react": "^0.0.0",
@@ -37,7 +38,8 @@
     "react-router-dom": "^0.0.0",
     "react-tap-event-plugin": "^0.0.0",
     "recompose": "^0.0.0",
-    "styled-components": "next"
+    "styled-components": "next",
+    "tinycolor2": "^0.0.0"
   },
   "devDependencies": {
     "@gutenye/react-scripts": "^0.0.0",

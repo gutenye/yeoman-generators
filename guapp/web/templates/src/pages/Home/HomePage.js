@@ -1,20 +1,5 @@
-import React, { observer, styled, graphql, compose } from 'vendor'
-
-class HomePage extends React.Component {
-  render() {
-    if (this.props.loading)
-      return null
-    const {users} = this.props
-    return (
-      <Root>
-        hello
-      </Root>
-    )
-  }
-}
-
-const Root = styled.div`
-`
+import { observer, graphql, compose } from 'vendor'
+import HomeComponent from './HomeComponent'
 
 const QueryHome = graphql(`{
   users {
@@ -27,4 +12,4 @@ const QueryHome = graphql(`{
 export default compose(
   observer,
   //QueryHome,
-)(HomePage)
+)(HomeComponent)
