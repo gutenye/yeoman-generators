@@ -19,6 +19,7 @@ module.exports = class extends Generator {
     try {
       fs.symlinkSync('../docs', 'docs')
       fs.symlinkSync('../shared', 'shared')
+      fs.symlinkSync('/Users/guten/dev/one/gureact/src', 'gureact')
     } catch (e) {
       // catch EEXIST
     }
