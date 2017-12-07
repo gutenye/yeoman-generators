@@ -1,3 +1,4 @@
+//import 'normalize.css'
 import { s } from 'vendor'
 import { injectGlobal } from 'styled-components'
 
@@ -6,12 +7,12 @@ import { injectGlobal } from 'styled-components'
 injectGlobal`
   * { padding: 0; margin: 0; box-sizing: border-box; }
   a, a:visited { text-decoration: none; color: inherit; }
-  img { max-width: 100%; vertical-align: bottom; }
-  input { border: 0; }
-  input:focus { outline: none; }
+  img, video { max-width: 100%; vertical-align: bottom; }
+  input, textarea { border: none; }
+  input:focus, textarea:focus { outline: none; }
 
   body {
-    background-color: #fafafa;
-    font-family: ${s.fontFamily};
+    background-color: white;
+    font-family: Helvetica,Arial,sans-serif;
   }
 `

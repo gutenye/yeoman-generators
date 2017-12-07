@@ -1,5 +1,7 @@
-*.sqlite
 /src/rc.js
+/guserver
+/uploads
+*.sqlite
 
 node_modules
 bower_components

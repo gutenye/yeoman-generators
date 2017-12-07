@@ -8,8 +8,13 @@
     "build": "babel src -d lib --exclude __tests__",
     "build:docs": "./ake build:docs",
     "test": "jest",
-    "setup": "NODE_ENV=production NODE_PATH=\"src:$NODE_PATH\" babel-node scripts/setup.js",
-    "migrate": "NODE_ENV=production NODE_PATH=\"src:$NODE_PATH\" babel-node scripts/migrate.js"
+    "setup": "NODE_ENV=production NODE_PATH=\"lib:$NODE_PATH\" babel-node scripts/setup.js",
+    "migrate": "NODE_ENV=production NODE_PATH=\"lib:$NODE_PATH\" babel-node scripts/migrate.js"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
   },
   "jest": {
     "modulePaths": [
@@ -34,8 +39,11 @@
     "guserver": "^0.0.0",
     "guserver-auth-magic": "^0.0.0",
     "guserver-schema-mini": "^0.0.0",
+    "guserver-process-upload": "^0.0.0",
     "pg": "^0.0.0",
-    "sequelize": "^0.0.0"
+    "pdjs": "^0.0.0",
+    "sequelize": "^0.0.0",
+    "fs-extra": "^0.0.0"
   },
   "devDependencies": {
     "babel-plugin-transform-class-properties": "^0.0.0",
@@ -50,7 +58,6 @@
     "mockjs": "^0.0.0",
     "nodemon": "^0.0.0",
     "sequelize-cli": "^0.0.0",
-    "sqlite3": "^0.0.0",
     "eslint-config-guten": "^0.0.0",
     "babel-eslint": "^0.0.0",
     "eslint": "^0.0.0",

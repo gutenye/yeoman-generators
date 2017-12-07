@@ -17,7 +17,6 @@ module.exports = class extends Generator {
   writing() {
     this.fs.copyTpl(`${this.templatePath()}/**`, this.destinationPath(), this.props, {}, {globOptions: {dot: true}})
     try {
-      fs.symlinkSync('../docs', 'docs')
       fs.symlinkSync('../shared', 'shared')
       fs.symlinkSync('/Users/guten/dev/one/gureact/src', 'gureact')
     } catch (e) {

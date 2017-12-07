@@ -1,15 +1,15 @@
-import { observer, graphql, compose } from 'vendor'
+import { graphql, gql, compose } from 'vendor'
 import HomeComponent from './HomeComponent'
 
-const QueryHome = graphql(`{
+const QueryHome = graphql(gql`query Home {
   users {
     name
   }
 }`, {
-  initData: {users: []},
+  //initVariables: {q: undefined}, // reset variable when called again.
+  //initData: {users: []}, // give array initial value 
 })
 
 export default compose(
-  observer,
   //QueryHome,
 )(HomeComponent)

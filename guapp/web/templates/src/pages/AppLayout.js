@@ -1,5 +1,5 @@
 import React, { observer, styled } from 'vendor'
-import DevTools from 'mobx-react-devtools'
+const DevTools = process.env.NODE_ENV === 'development' ? require('mobx-react-devtools') : null
 
 @observer
 class AppLayout extends React.Component {

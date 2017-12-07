@@ -1,38 +1,40 @@
 import { ApolloClient } from "apollo-client"
 import { ApolloLink } from 'apollo-link'
-import { createHttpLink } from 'apollo-link-http'
+import { createUploadLink } from 'apollo-upload-client/lib/main'
 import { setContext } from 'apollo-link-context'
 import { onError } from 'apollo-link-error'
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { Toast } from 'antd-mobile'
 
-const httpLink = createHttpLink({ uri: '/api/graphql' })
+const httpLink = createUploadLink({
+  uri: '/api/graphql',
+})
 
-const authLink = setContext((_, { headers}) => {
+const authLink = setContext(() => {
   const token = localStorage.getItem('token')
+  if (!token) return {}
   return {
     headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : null,
-    } 
+      authorization: `Bearer ${token}`,
+    },
   }
 })
 
-const logoutLink = onError(({ networkError }) => {
-  if (networkError === 401) {
-    localStorage.removeItem('token')
-    location.href = '/login'
+const errorLink = onError(({ networkError, graphQLErrors }) => {
+  if (networkError) {
+    Toast.fail(networkError.message)
+  }
+
+  if (graphQLErrors) {
+    Toast.fail(graphQLErrors[0].message)
   }
 })
 
-const link = ApolloLink.from([authLink, logoutLink, httpLink])
+
+const link = ApolloLink.from([authLink, errorLink, httpLink])
+const cache = new InMemoryCache()
 
 export const client = new ApolloClient({
-  link: link,
-  cache: new InMemoryCache(),
-  dataIdFromObject: (result) => {
-    if (result.id && result.__typename) {
-      return `${result.__typename}${result.id}`
-    }
-    return null
-  }
+  link,
+  cache,
 })

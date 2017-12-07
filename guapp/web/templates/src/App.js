@@ -3,9 +3,12 @@ import './App.css.js'
 import React from 'react'
 import PropTypes from 'prop-types'
 import theme from './theme'
-import { history } from './vendor/patch-react-router'
+import PrivateRoute from 'gureact/lib/PrivateRoute'
+import BrowserRouter from 'gureact/lib/polyfill/patch-react-router'
+import GoogleAnalytics from 'react-ga'
+import withTracker from 'gureact/lib/withTracker'
+import rc from 'rc'
 import { Router, Route, Switch } from 'react-router-dom'
-import { PrivateRoute } from 'components/PrivateRoute'
 import { ThemeProvider } from 'styled-components'
 import { ApolloProvider } from 'react-apollo'
 import { client } from './apollo'
@@ -13,10 +16,11 @@ import { client } from './apollo'
 import LoadAuth from './pages/LoadAuth'
 import HomePage from './pages/Home/HomePage'
 import LoginPage from './pages/Auth/LoginPage'
-import LoginOAuthTokenPage from './pages/Auth/LoginOAuthTokenPage'
+//import LoginOAuthTokenPage from './pages/Auth/LoginOAuthTokenPage'
 import AppLayout from './pages/AppLayout'
 import TestPage from './pages/TestPage'
-import AppDesign from './AppDesign'
+
+GoogleAnalytics.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_ID)
 
 export default class App extends React.Component {
   static childContextTypes = {
@@ -37,17 +41,18 @@ export default class App extends React.Component {
       <LoadAuth>
       <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
-      <Router history={history}>
+      <BrowserRouter>
+      <Route component={withTracker(() => (
         <Switch>
-          <Route path="/design" component={AppDesign} />
           <Route path='/test' component={TestPage} />
           <Route path='/login' component={LoginPage} />
-          <Route path='/login-oauth-token' component={LoginOAuthTokenPage} />
+          {/*<Route path='/login-oauth-token' component={LoginOAuthTokenPage} />*/}
           <PrivateRoute component={() => <AppLayout>
             <Route path='/' component={HomePage} exact />
           </AppLayout>} />
         </Switch>
-      </Router>
+      ))} />
+      </BrowserRouter>
       </ThemeProvider>
       </ApolloProvider>
       </LoadAuth>

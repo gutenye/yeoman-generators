@@ -1,5 +1,7 @@
 FROM gutenye/node
 
+ENV GENERATE_SOURCEMAP="false"
+
 COPY package.json yarn.lock /app/
 RUN yarn
 COPY . /app

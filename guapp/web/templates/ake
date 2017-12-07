@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-export PORT=3000
-export PATH="node_modules/.bin:$PATH"
-
 main() {
   npm start
 }
@@ -15,9 +12,26 @@ test() {
   npm test
 }
 
+design() {
+  node scripts/start-design.js
+}
+
+link() {
+  yarn link gureact
+}
+
+unlink() {
+  yarn unlink gureact
+  yarn
+}
+
 case "$1" in
   '' ) main ;;
   deploy ) ../ake "$@" ;;
   b | build ) build ;;
   t | test ) test ;;
+  design ) design ;;
+  link ) link ;;
+  unlink ) unlink ;;
+  analyze ) source-map-explorer build/static/js/main.*.{js,map} ;;
 esac

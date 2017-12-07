@@ -11,6 +11,11 @@
     "lint:js": "eslint src/**/*.js",
     "lint:css": "scss-lint"
   },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
   "eslintConfig": {
     "extends": "guten-react"
   },
@@ -20,6 +25,7 @@
     "apollo-client-preset": "^0.0.0",
     "apollo-link-context": "^0.0.0",
     "apollo-link-error": "^0.0.0",
+    "apollo-upload-client": "^0.0.0",
     "frisbee": "^0.0.0",
     "classnames": "^0.0.0",
     "graphql-tag": "^0.0.0",
@@ -39,7 +45,8 @@
     "react-tap-event-plugin": "^0.0.0",
     "recompose": "^0.0.0",
     "styled-components": "next",
-    "tinycolor2": "^0.0.0"
+    "tinycolor2": "^0.0.0",
+    "react-ga": "^0.0.0"
   },
   "devDependencies": {
     "@gutenye/react-scripts": "^0.0.0",
@@ -50,15 +57,19 @@
     "eslint-config-guten-react": "^0.0.0",
     "eslint-config-prettier": "^0.0.0",
     "eslint-plugin-import": "^0.0.0",
-    "eslint-plugin-react": "^0.0.0"
+    "eslint-plugin-react": "^0.0.0",
+    "source-map-explorer": "^0.0.0"
   },
-  "proxy": "http://localhost:3001",
-  "proxy2": {
+  "proxy": {
     "/api": {
       "target": "http://localhost:3001",
       "pathRewrite": {
         "^/api" : ""
       }
+    },
+    "/uploads": {
+      "target": "http://localhost:3001"
     }
-  }
+  },
+  "license": "null"
 }

@@ -9,26 +9,29 @@ variables:
 server:
   stage: image
   only:
-    - master
+    - server
   script:
     - cd server
-    - cp -r ../shared src/shared
+    - rm src/shared && cp -r ../shared src/shared
     - build-image <%=username%>/<%=project%>-server
   image: gutenye/docker
 
 web:
   stage: image
   only:
-    - master
+    - web
   script:
     - cd web
+    - rm public/assets.design
+    - echo $ENV_PRODUCTION > .env.production
     - build-image <%=username%>/<%=project%>-web
   image: gutenye/docker
 
 deploy:
   stage: deploy
   only:
-    - master
+    - web
+    - server
   script:
     - deploy <%=project%> 23
   image: gutenye/deploy
@@ -52,7 +55,7 @@ pages:
       - public
     expire_in: 1h
   only:
-    - master
+    - docs
   image: gutenye/node
 
 mirror:

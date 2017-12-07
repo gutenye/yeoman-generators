@@ -1,45 +1,46 @@
 // @flow
-import * as q from './queryUtils'
+import QueryUtils, { hasNextPage } from '../schema/queryUtils'
 import { resolver as _resolver } from '@gutenye/graphql-sequelize'
-import { isNil, omitBy } from 'lodash'
+import { isPlainObject, omitBy, isNil } from 'lodash'
 
 /*
- * - pagination: (page: Int, limit: Int)
- * - default: limit is 10
- *
- * resolver(Post, (q, {search}) => {
+ * resolver(Post, (query, {search}) => {
+ *   query = query
+ *     .q({fields: ['name']})
+ *     .query
  *   if (search)
- *     return {...q, where: {a: search}}
- *   return q
- * }, r => {
- *   return r
- * }, options)
- *
- *
- * query(gql, {variables: {limit: null|undefined}})
+ *     query.where = { .. }
+ *   return query
+ * }, afterFn)
  */
 export default function resolver(
   model: any,
   _before: any,
-  after: any,
+  _after: any,
   options: any = {}
 ): any {
   const before = async (query, args, context, info) => {
     try {
-      query.where = query.where || {}
-      args = omitBy(args, isNil)
-
-      query = q.pagination({ defaultLimit: 10 })(query, args)
-
+      let q = new QueryUtils(query, args).pagination()
       if (_before) {
-        query = await _before(query, args, context, info)
-        query = omitBy(query, isNil)
+        q = await _before(q, args, context, info)
       }
+      query = isPlainObject(q) ? q : q.query
+      query = omitBy(query, isNil)
       return query
     } catch (e) {
       console.error(e)
       return null
     }
+  }
+  const after = (result, args, context, info) => {
+    if (result.totalCount) {
+      result.hasNextPage = hasNextPage(result.totalCount, args)
+    }
+    if (_after) {
+      result = _after(result, args, context, info)
+    }
+    return result
   }
   return _resolver(model, { before, after, ...options })
 }

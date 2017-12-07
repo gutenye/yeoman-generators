@@ -1,4 +1,10 @@
-// Place your settings in this file to overwrite default and user settings.
 {
-  "javascript.validate.enable": false
+  "javascript.validate.enable": false,
+  "editor.formatOnSave": true,
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5"
 }
