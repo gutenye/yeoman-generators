@@ -1,10 +1,7 @@
 // @flow
-import { sequelize, Op } from 'vendor'
+import { Op } from 'sequelize'
 import { parse, startOfMonth, endOfMonth } from 'date-fns'
-import { isNil, omitBy } from 'lodash'
-
-// const query = new QueryUtils(query, args)
-// query.q({fields: ['name']})
+import QueryUtilsBase from 'guserver/lib/polyfill/QueryUtilsBase'
 
 const DEFAULT_LIMIT = 10
 
@@ -29,23 +26,18 @@ type inMonthT = {
   field: string,
 }
 
-export default class QueryUtils {
-  query: QueryT
-  args: ArgsT
-
-  constructor(query: QueryT, args: ArgsT) {
-    query.where = query.where || {}
-    args = omitBy(args, isNil)
-    this.query = query
-    this.args = args
-  }
-
+export default class QueryUtils extends QueryUtilsBase {
   pagination() {
-    const { query, args: { limit, offset, page } } = this
-    query.limit = limit || DEFAULT_LIMIT
-    if (offset) query.offset = offset
-    if (page) query.offset = (page - 1) * query.limit
-    if (query.limit === -1) delete query.limit
+    let { query, args: { limit, offset, page } } = this
+    limit = limit || DEFAULT_LIMIT
+    if (offset) {
+      query.offset = offset
+    } else if (page) {
+      query.offset = (page - 1) * limit
+    }
+    if (limit !== -1) {
+      query.limit = limit
+    }
     return this
   }
 
@@ -79,7 +71,6 @@ export default class QueryUtils {
   // inMonth({field: 'createdAt'})
   inMonth({ field }: inMonthT) {
     const { query, args: { inMonth } } = this
-    pd('inMonth', inMonth, this.args)
     if (inMonth) {
       const month = parse(inMonth, 'YYYY/MM')
       query.where[field] = {
@@ -87,25 +78,6 @@ export default class QueryUtils {
         [Op.lte]: endOfMonth(month),
       }
     }
-    pd('this.query', this.query)
     return this
   }
-}
-
-export function requireAuth(user: any) {
-  if (!user) {
-    throw new Error('Unauthorized')
-  }
-}
-
-export function hasNextPage(totalCount, { limit, page, offset }) {
-  limit = limit || DEFAULT_LIMIT
-  if (limit < 0) return false
-  if (page) {
-    return page * limit < totalCount
-  }
-  if (offset) {
-    return offset + limit < totalCount
-  }
-  return limit < totalCount
 }

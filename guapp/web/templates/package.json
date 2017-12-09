@@ -1,7 +1,6 @@
 {
   "name": "web",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -19,6 +18,17 @@
   "eslintConfig": {
     "extends": "guten-react"
   },
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:4001",
+      "pathRewrite": {
+        "^/api" : ""
+      }
+    },
+    "/uploads": {
+      "target": "http://localhost:4001"
+    }
+  },
   "dependencies": {
     "@gutenye/react-icon-base": "^0.0.0",
     "api-error-handler": "^0.0.0",
@@ -34,7 +44,6 @@
     "mobx": "^0.0.0",
     "mobx-react": "^0.0.0",
     "mobx-react-devtools": "^0.0.0",
-    "normalize.css": "^0.0.0",
     "prop-types": "^0.0.0",
     "react": "^0.0.0",
     "react-apollo": "^0.0.0",
@@ -45,7 +54,6 @@
     "react-tap-event-plugin": "^0.0.0",
     "recompose": "^0.0.0",
     "styled-components": "next",
-    "tinycolor2": "^0.0.0",
     "react-ga": "^0.0.0"
   },
   "devDependencies": {
@@ -60,16 +68,6 @@
     "eslint-plugin-react": "^0.0.0",
     "source-map-explorer": "^0.0.0"
   },
-  "proxy": {
-    "/api": {
-      "target": "http://localhost:3001",
-      "pathRewrite": {
-        "^/api" : ""
-      }
-    },
-    "/uploads": {
-      "target": "http://localhost:3001"
-    }
-  },
-  "license": "null"
+  "description": "hello",
+  "license": "MIT"
 }

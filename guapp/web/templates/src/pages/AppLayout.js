@@ -1,5 +1,5 @@
 import React, { observer, styled } from 'vendor'
-const DevTools = process.env.NODE_ENV === 'development' ? require('mobx-react-devtools') : null
+const DevTools = process.env.NODE_ENV !== 'production' ? require('mobx-react-devtools').default : null
 
 @observer
 class AppLayout extends React.Component {
@@ -7,7 +7,7 @@ class AppLayout extends React.Component {
     const { children } = this.props
     return (
       <Root>
-        {process.env.NODE_ENV === 'development' && <DevTools />}
+        {process.env.NODE_ENV !== 'production' && <DevTools />}
         {children}
       </Root>
     )

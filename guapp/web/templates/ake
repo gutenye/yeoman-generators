@@ -4,18 +4,6 @@ main() {
   npm start
 }
 
-build() {
-  npm run build
-}
-
-test() {
-  npm test
-}
-
-design() {
-  node scripts/start-design.js
-}
-
 link() {
   yarn link gureact
 }
@@ -28,9 +16,9 @@ unlink() {
 case "$1" in
   '' ) main ;;
   deploy ) ../ake "$@" ;;
-  b | build ) build ;;
-  t | test ) test ;;
-  design ) design ;;
+  b | build ) npm run build ;;
+  t | test ) npm test ;;
+  design ) gureact start-design ;;
   link ) link ;;
   unlink ) unlink ;;
   analyze ) source-map-explorer build/static/js/main.*.{js,map} ;;

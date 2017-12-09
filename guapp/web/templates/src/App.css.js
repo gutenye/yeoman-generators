@@ -1,5 +1,3 @@
-//import 'normalize.css'
-import { s } from 'vendor'
 import { injectGlobal } from 'styled-components'
 
 /* Reset */

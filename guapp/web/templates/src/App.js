@@ -7,7 +7,6 @@ import PrivateRoute from 'gureact/lib/PrivateRoute'
 import BrowserRouter from 'gureact/lib/polyfill/patch-react-router'
 import GoogleAnalytics from 'react-ga'
 import withTracker from 'gureact/lib/withTracker'
-import rc from 'rc'
 import { Router, Route, Switch } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { ApolloProvider } from 'react-apollo'
@@ -22,7 +21,7 @@ import TestPage from './pages/TestPage'
 
 GoogleAnalytics.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_ID)
 
-export default class App extends React.Component {
+class App extends React.Component {
   static childContextTypes = {
     reactIconBase: PropTypes.object
   }
@@ -59,3 +58,5 @@ export default class App extends React.Component {
     )
   }
 }
+
+export default App

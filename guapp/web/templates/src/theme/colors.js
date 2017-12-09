@@ -1,4 +1,4 @@
-import { genTones, textColors } from './utils'
+import { textColors } from './utils'
 
 export const primary = '#3a5795' // Blue
 export const primaryLight = '#6d85ca'
