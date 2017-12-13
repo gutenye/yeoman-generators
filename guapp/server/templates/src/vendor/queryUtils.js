@@ -1,7 +1,7 @@
 // @flow
 import { Op } from 'sequelize'
 import { parse, startOfMonth, endOfMonth } from 'date-fns'
-import QueryUtilsBase from 'guserver/lib/polyfill/QueryUtilsBase'
+import QueryUtilsBase from 'guserver/lib/polyfill/lib/QueryUtilsBase'
 
 const DEFAULT_LIMIT = 10
 
