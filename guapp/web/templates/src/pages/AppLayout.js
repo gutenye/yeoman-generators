@@ -7,7 +7,7 @@ class AppLayout extends React.Component {
     const { children } = this.props
     return (
       <Root>
-        {process.env.NODE_ENV !== 'production' && <DevTools />}
+        {/* {process.env.NODE_ENV !== 'production' && <DevTools />} */}
         {children}
       </Root>
     )

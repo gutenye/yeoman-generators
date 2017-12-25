@@ -1,13 +1,15 @@
-import './App.css.js'
 import React from 'react'
 import PropTypes from 'prop-types'
 import theme from './theme'
-import PrivateRoute from 'gureact/lib/PrivateRoute'
-import BrowserRouter from 'gureact/lib/polyfill/patch-react-router'
+import BrowserRouter from 'gureact/BrowserRouter'
+import WrapperRoute from 'gureact/WrapperRoute'
 import { Route, Switch } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 
+import AppLayout from 'pages/AppLayout'
+import LoginPage from 'pages/Auth/LoginPage'
 import HomeDesign from 'pages/Home/HomeDesign'
+import './App.css.js'
 
 export default class App extends React.Component {
   static childContextTypes = {
@@ -28,7 +30,10 @@ export default class App extends React.Component {
       <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Switch>
-          <Route path='/' component={HomeDesign} exact />
+          <Route path='/login' component={LoginPage} />
+          <WrapperRoute wrapper={AppLayout}>
+            <Route path='/' component={HomeDesign} exact />
+          </WrapperRoute>
         </Switch>
       </BrowserRouter>
       </ThemeProvider>

@@ -1,12 +1,11 @@
-//import 'normalize.css'
-import './App.css.js'
 import React from 'react'
 import PropTypes from 'prop-types'
 import theme from './theme'
-import PrivateRoute from 'gureact/lib/PrivateRoute'
-import BrowserRouter from 'gureact/lib/polyfill/patch-react-router'
-import GoogleAnalytics from 'react-ga'
-import withTracker from 'gureact/lib/withTracker'
+import BrowserRouter from 'gureact/BrowserRouter'
+import PrivateRoute from 'gureact/PrivateRoute'
+import WrapperRoute from 'gureact/WrapperRoute'
+import GoogleAnalytics from 'gureact/GoogleAnalytics'
+import ga from 'react-ga'
 import { Router, Route, Switch } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { ApolloProvider } from 'react-apollo'
@@ -17,9 +16,9 @@ import HomePage from './pages/Home/HomePage'
 import LoginPage from './pages/Auth/LoginPage'
 //import LoginOAuthTokenPage from './pages/Auth/LoginOAuthTokenPage'
 import AppLayout from './pages/AppLayout'
-import TestPage from './pages/TestPage'
+import './App.css.js'
 
-GoogleAnalytics.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_ID)
+ga.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_ID)
 
 class App extends React.Component {
   static childContextTypes = {
@@ -41,16 +40,15 @@ class App extends React.Component {
       <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
       <BrowserRouter>
-      <Route component={withTracker(() => (
+      <WrapperRoute wrapper={GoogleAnalytics}>
         <Switch>
-          <Route path='/test' component={TestPage} />
           <Route path='/login' component={LoginPage} />
           {/*<Route path='/login-oauth-token' component={LoginOAuthTokenPage} />*/}
-          <PrivateRoute component={() => <AppLayout>
+          <WrapperRoute wrapper={AppLayout}>
             <Route path='/' component={HomePage} exact />
-          </AppLayout>} />
+          </WrapperRoute>
         </Switch>
-      ))} />
+      </WrapperRoute>
       </BrowserRouter>
       </ThemeProvider>
       </ApolloProvider>

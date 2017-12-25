@@ -15,8 +15,9 @@
     "husky": "^0.0.0",
     "lint-staged": "^0.0.0",
     "prettier": "^0.0.0"
-    "bcrypt": "^1.0.2",
-    "gudatagen": "1.0.5",
-    "babel-preset-env": "^1.6.1"
+    "bcrypt": "^0.0.0",
+    "gudatagen": "^0.0.0",
+    "faker": "^0.0.0",
+    "babel-preset-env": "^0.0.0"
   }
 }

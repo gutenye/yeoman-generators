@@ -2,10 +2,10 @@
   "name": "web",
   "version": "0.0.1",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "eject": "react-scripts eject",
-    "test": "react-scripts test",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "eject": "react-app-rewired eject",
+    "test": "react-app-rewired test",
     "lint": "npm run lint:js & npm run lint:css",
     "lint:js": "eslint src/**/*.js",
     "lint:css": "scss-lint"
@@ -57,7 +57,9 @@
     "react-ga": "^0.0.0"
   },
   "devDependencies": {
-    "@gutenye/react-scripts": "^0.0.0",
+    "react-scripts": "^0.0.0",
+    "react-app-rewired": "^0.0.0",
+    "react-app-rewire-guten": "^0.0.0",
     "flow-bin": "^0.0.0",
     "flow-typed": "^0.0.0",
     "eslint": "^0.0.0",
