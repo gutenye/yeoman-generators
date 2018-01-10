@@ -1,4 +1,7 @@
-build
+/build
+/gureact
+/flow-typed
+/src/design/data.txt
 
 node_modules
 npm-debug.log

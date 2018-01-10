@@ -17,12 +17,17 @@ unlink() {
   yarn add gureact
 }
 
+design-gen-data() {
+  NODE_PATH="src:/usr/local/lib/node_modules:node_modules" babel-node --presets env src/design/genData.js
+}
+
 case "$1" in
   '' ) main ;;
   deploy ) ../ake "$@" ;;
   b | build ) npm run build ;;
   t | test ) npm test ;;
   design ) gureact start-design ;;
+  design-gen-data ) design-gen-data ;; 
   link ) link ;;
   unlink ) unlink ;;
   analyze ) source-map-explorer build/static/js/main.*.{js,map} ;;
