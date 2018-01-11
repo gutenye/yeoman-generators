@@ -3,4 +3,4 @@ import fs from 'fs'
 import path from 'path'
 import data from './data'
 
-fs.writeFileSync(path.join(__dirname, 'data.json'), CircularJSON.stringify(data))
+fs.writeFileSync(path.join(__dirname, 'data.txt'), CircularJSON.stringify(data))

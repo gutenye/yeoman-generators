@@ -4,7 +4,6 @@ $ mkdir PROJECT; cd PROJECT
 * yo guapp          // base + web + server
 * yo guapp:web      // another web, based on folder name
 
-
 * yo gunode:lib        // compose eslint, jest, ...
 * yo gunode:eslint     // standalone eslint.
 * yo gunode:jest
@@ -25,8 +24,4 @@ ROOT/
 # init
 
   prompting
-
-
-
-
 

@@ -1,0 +1,25 @@
+{
+  "name": "<%=project%>",
+  "version": "0.0.1",
+  "description": "FIXME",
+  "main": "lib/index.js",
+  "repository": "<%=username%>/<%=project%>",
+  "license": "MIT",
+  "scripts": {
+    "prepublishOnly": "./ake build",
+    "test": "jest"
+  },
+  "jest": {
+    "transform": {
+      "\\.js$": "babel-jest",
+      "\\.css$": "jest-transforms/css",
+      "^(?!.*\\.(js|jsx|css|json)$)": "jest-transforms/file"
+    }
+  },
+  "devDependencies": {
+    "eslint-config-guten": "^0.0.0",
+    "jest": "^0.0.0",
+    "babel-jest": "^0.0.0",
+    "jest-transforms": "^0.0.0"
+  }
+}

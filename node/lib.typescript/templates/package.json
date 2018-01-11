@@ -1,0 +1,39 @@
+{
+  "name": "<%=project%>",
+  "version": "0.0.1",
+  "description": "FIXME",
+  "main": "lib/index.js",
+  "repository": "<%=username%>/<%=project%>",
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "prepublishOnly": "./ake build"
+  },
+  "eslintConfig": {
+    "extends": "guten-typescript"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json",
+      "node"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTest.ts",
+    "testMatch": [
+      "**/__tests__/**/*.test.(ts|js)"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^0.0.0",
+    "eslint-config-guten-typescript": "^0.0.0",
+    "jest": "^0.0.0",
+    "ts-jest": "^0.0.0",
+    "typescript": "^0.0.0"
+  }
+}

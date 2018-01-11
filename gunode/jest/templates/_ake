@@ -1,5 +1,0 @@
-test() {
-  jest --watch
-}
-
-  t | test ) jest ;;
