@@ -23,7 +23,7 @@ design-gen-data() {
 
 case "$1" in
   '' ) main ;;
-  deploy ) ../ake "$@" ;;
+  push ) ../ake "$@" ;;
   b | build ) npm run build ;;
   t | test ) npm test ;;
   design ) gureact start-design ;;

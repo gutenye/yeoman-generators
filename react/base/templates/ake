@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-# ./ake deploy web server
-# ./ake deploy all
+# ./ake push web server
+# ./ake push all
 
-deploy() {
+push() {
   [[ $1 == "all" ]] && names="web server" || names="$@"
   for name in $names; do
     git push origin master:$name
@@ -11,5 +11,5 @@ deploy() {
 }
 
 case "$1" in
-  deploy ) shift; deploy "$@" ;;
+  push ) shift; push "$@" ;;
 esac

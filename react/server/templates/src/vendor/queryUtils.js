@@ -34,7 +34,7 @@ export default class QueryUtils extends QueryUtilsBase {
       query.offset = offset
     } else if (page) {
       query.offset = (page - 1) * limit
-    }
+    } 
     if (limit !== -1) {
       query.limit = limit
     }

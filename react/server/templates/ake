@@ -29,7 +29,7 @@ case "$1" in
   t | test ) jest --watch ;
   build:docs ) guserver build-docs admin store ;;
   seeds-dev ) guserver seeds-dev ;;
-  deploy ) ../ake "$@" ;;
+  push ) ../ake "$@" ;;
   link ) link ;;
   unlink ) unlink ;;
 esac
