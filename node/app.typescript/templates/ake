@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+main() {
+  nodemon --exec ts-node src/app.ts
+}
+
+
+case "$1" in
+  "" ) main ;;
+  t | test ) jest --watch ;;
+esac

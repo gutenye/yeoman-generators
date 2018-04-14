@@ -2,15 +2,10 @@
   "name": "<%=project%>",
   "version": "0.0.1",
   "description": "FIXME",
-  "main": "lib/index.js",
-  "repository": "<%=username%>/<%=project%>",
+  "main": "lib/app.js",
   "license": "MIT",
-  "files": [
-    "lib"
-  ],
   "scripts": {
-    "build": "tsc",
-    "prepublishOnly": "build"
+    "build": "tsc"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -35,6 +30,8 @@
     "eslint-config-guten-typescript": "^0.0.0",
     "jest": "^0.0.0",
     "ts-jest": "^0.0.0",
-    "typescript": "^0.0.0"
+    "typescript": "^0.0.0",
+    "nodemon": "^0.0.0",
+    "ts-node": "^0.0.0"
   }
 }
