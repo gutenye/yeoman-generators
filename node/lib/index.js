@@ -1,4 +1,4 @@
-roptsequire('pdjs')
+require('pdjs')
 require('yeoman-guten')
 const Generator = require('yeoman-generator')
 
