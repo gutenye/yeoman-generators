@@ -2,18 +2,21 @@
 
 export PORT=4001
 export WS_PORT=4002
-export DATABASE_URL=${DATABASE_URL-postgres://localhost/<%=project%>}
+export DATABASE_URL=${DATABASE_URL-postgres://guten:guten@localhost/wallet}
 export PATH="node_modules/.bin:$PATH"
 export NODE_PATH="src:$NODE_PATH"
 export APP_ENV="node" # for gudatagen
 
 main() {
-  nodemon --exec babel-node src/server.js
+  nodemon --exec ts-node --type-check src/server.ts
 }
 
 link() {
   yarn link guserver guserver-auth-magic guserver-schema-mini guserver-process-upload
-  rm -rf ~/dev/one/guserver/node_modules/graphql && ln -s `pwd`/node_modules/graphql ~/dev/one/guserver/node_modules 
+  # fix graphql multiple instance
+  rm -rf ~/dev/one/guserver/packages/guserver/node_modules/graphql && ln -s `pwd`/node_modules/graphql ~/dev/one/guserver/packages/guserver/node_modules 
+  # typeorm use same version
+  rm -rf ~/dev/one/guserver/packages/guserver/node_modules/typeorm && ln -s `pwd`/node_modules/typeorm ~/dev/one/guserver/packages/guserver/node_modules
 
   (cd uploads/processed && ln -sf ../../../shared/fixtures/images/* .)
   #ln -s ../../../shared/fixtures/images/post0.jpg uploads/processed/post0@thumb.jpg
@@ -27,9 +30,12 @@ unlink() {
 case "$1" in
   "" ) main ;;
   t | test ) jest --watch ;;
-  build:docs ) guserver build-docs admin store ;;
-  seeds-dev ) guserver seeds-dev ;;
+  build-docs ) guserver build-docs admin store ;;
+  # seeds-dev ) guserver seeds-dev ;;
+  seeds-dev ) ts-node --ignore=true node_modules/guserver/scripts/seeds-dev.ts ;;
   push ) ../ake "$@" ;;
   link ) link ;;
   unlink ) unlink ;;
+  testmodel ) ts-node --type-check src/testmodel.ts ;;
+  testfixtures ) ts-node src/shared/fixtures/fixtures.ts ;;
 esac

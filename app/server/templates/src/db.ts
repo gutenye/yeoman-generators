@@ -1,4 +1,4 @@
-import { User } from 'models'
+import { User } from './models'
 
 class Db {
   userFind(where) {
@@ -6,11 +6,11 @@ class Db {
   }
 
   userCreate(props) {
-    return User.create(props)
+    return User.create(props).save()
   }
 
   userUpdate(user, props) {
-    return user.update(props)
+    return User.update(user.id, props)
   }
 
   userSerialize(user) {

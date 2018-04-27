@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "isShellCommand": true,
+  "showOutput": "always",
+  "suppressTaskName": true,
+  "tasks": [
+    {
+      "command": "./ake",
+      "taskName": "start",
+      "args": [
+        ""
+      ]
+    }
+  ]
+}

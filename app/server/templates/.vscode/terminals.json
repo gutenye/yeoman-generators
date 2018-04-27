@@ -1,0 +1,10 @@
+{
+  "autorun": false,
+  "terminals": [
+    {
+      "name": "ake",
+      "command": "./ake",
+      "focus": true
+    }
+  ]
+}

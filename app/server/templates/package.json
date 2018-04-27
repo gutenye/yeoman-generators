@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "NODE_ENV=production NODE_PATH=\"lib:$NODE_PATH\" node lib/server.js",
-    "build": "babel src -d lib --exclude __tests__",
+    "build": "tsc",
     "build:docs": "./ake build:docs",
     "test": "jest",
     "setup": "NODE_ENV=production NODE_PATH=\"lib:$NODE_PATH\" babel-node scripts/setup.js",
@@ -17,52 +17,49 @@
     "trailingComma": "es5"
   },
   "jest": {
-    "modulePaths": [
-      "<rootDir>/src"
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json",
+      "node"
     ],
-    "collectCoverageFrom": [
-      "src/**/*.js"
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTest.ts",
+    "testMatch": [
+      "**/__tests__/**/*.test.(ts|js)"
     ]
   },
   "eslintConfig": {
-    "extends": [
-      "guten"
-    ]
+    "extends": "guten-typescript"
   },
   "dependencies": {
-    "express": "^0.0.0",
-    "graphql": "^0.0.0",
-    "graphql-relay": "^0.0.0",
-    "graphql-subscriptions": "^0.0.0",
-    "graphql-type-json": "^0.0.0",
-    "guserver": "^0.0.0",
-    "guserver-auth-magic": "^0.0.0",
-    "guserver-schema-mini": "^0.0.0",
-    "guserver-process-upload": "^0.0.0",
-    "pg": "^0.0.0",
-    "pdjs": "^0.0.0",
-    "sequelize": "^0.0.0",
-    "fs-extra": "^0.0.0",
-    "date-fns": "^0.0.0"
+    "date-fns": "^2.0.0-alpha.7",
+    "express": "^4.16.3",
+    "fs-extra": "^5.0.0",
+    "graphql": "^0.13.2",
+    "graphql-relay": "^0.5.5",
+    "graphql-subscriptions": "^0.5.8",
+    "graphql-type-json": "^0.2.1",
+    "guserver": "^1.0.39",
+    "guserver-auth-magic": "^1.0.17",
+    "guserver-schema-mini": "^1.0.13",
+    "pdjs": "^1.0.6",
+    "pg": "^7.4.1",
+    "reflect-metadata": "^0.1.12",
+    "typeorm": "^0.2.0-alpha.19",
+    "bcrypt": "^2.0.1"
   },
   "devDependencies": {
-    "babel-cli": "^0.0.0",
-    "babel-core": "^0.0.0",
-    "babel-preset-env": "^0.0.0",
-    "babel-plugin-transform-class-properties": "^0.0.0",
-    "babel-plugin-transform-flow-strip-types": "^0.0.0",
-    "babel-plugin-transform-object-rest-spread": "^0.0.0",
-    "babel-jest": "^0.0.0",
-    "bcrypt": "^0.0.0",
-    "flow-bin": "^0.0.0",
-    "jest": "^0.0.0",
-    "mockjs": "^0.0.0",
-    "nodemon": "^0.0.0",
-    "sequelize-cli": "^0.0.0",
-    "eslint-config-guten": "^0.0.0",
-    "babel-eslint": "^0.0.0",
-    "eslint": "^0.0.0",
-    "eslint-plugin-import": "^0.0.0"
+    "eslint": "^4.19.1",
+    "eslint-config-guten-typescript": "^2.0.1",
+    "gudatagen": "^3.0.1",
+    "jest": "^22.4.3",
+    "nodemon": "^1.17.3",
+    "ts-jest": "^22.0.4",
+    "ts-node": "^6.0.1",
+    "typescript": "^2.7.1"
   },
   "author": "",
   "license": "ISC"

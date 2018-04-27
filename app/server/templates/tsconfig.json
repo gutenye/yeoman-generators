@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib",
+    "module": "commonjs",
+    "target": "es2017",
+    "lib": [
+      "esnext"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "src/*"
+      ]
+    },
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "./src/**/__tests__/*"
+  ]
+}
