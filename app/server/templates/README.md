@@ -1,7 +1,7 @@
 Setup
 
 ```
-$ createdb wallet 
+$ createdb <%=project%> 
 $ yarn
 $ ./ake seeds-dev
 $ ./ake
