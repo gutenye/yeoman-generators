@@ -11,6 +11,11 @@ module.exports = class extends Generator {
     this.fs.copyTpl(`${this.templatePath()}/**`, this.destinationPath(), this.props, {}, {globOptions: {dot: true}})
   }
 
+  install() {
+    this.spawnCommandSync('ncu', ['-u'])
+    this.yarnInstall()
+  }
+
   end() {
     const {username, project, gitUrl} = this.props
     this.spawnCommandSync('git', ['init'], {cwd: this.destinationPath('')})

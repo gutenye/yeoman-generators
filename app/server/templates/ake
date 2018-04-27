@@ -26,7 +26,7 @@ unlink() {
 
 case "$1" in
   "" ) main ;;
-  t | test ) jest --watch ;
+  t | test ) jest --watch ;;
   build:docs ) guserver build-docs admin store ;;
   seeds-dev ) guserver seeds-dev ;;
   push ) ../ake "$@" ;;

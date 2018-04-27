@@ -42,7 +42,8 @@
     "pg": "^0.0.0",
     "pdjs": "^0.0.0",
     "sequelize": "^0.0.0",
-    "fs-extra": "^0.0.0"
+    "fs-extra": "^0.0.0",
+    "date-fns": "^0.0.0"
   },
   "devDependencies": {
     "babel-cli": "^0.0.0",

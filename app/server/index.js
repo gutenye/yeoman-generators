@@ -15,7 +15,7 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copyTpl(`${this.templatePath()}/**`, this.destinationPath(), this.opts, {}, {globOptions: {dot: true}})
+    this.fs.copyTpl(`${this.templatePath()}/**`, this.destinationPath(), this.props, {}, {globOptions: {dot: true}})
     try {
       fs.symlinkSync('../shared', 'shared')
     } catch (e) {
@@ -29,7 +29,7 @@ module.exports = class extends Generator {
   }
 
   end() {
-    const {username, project, gitUrl, subproject} = this.opts
+    const {username, project, gitUrl, subproject} = this.props
     this.spawnCommandSync('flow-typed', ['install'])
     this.spawnCommandSync('git', ['init'])
     this.spawnCommandSync('git', ['remote', 'remove', 'origin'])
