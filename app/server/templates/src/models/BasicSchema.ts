@@ -9,12 +9,6 @@ export default {
     }
 
     scalar Json
-
-    schema {
-      query: Query
-      mutation: Mutation
-    }
-
   `,
 
   resolvers: {
