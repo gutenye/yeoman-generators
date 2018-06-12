@@ -1,0 +1,8 @@
+stages:
+  - mirror
+
+mirror:
+  stage: mirror
+  script:
+    - git-push git@gitlab.com:gutenye/yeoman-generators.git
+  image: ilyasemenov/gitlab-ci-git-push
