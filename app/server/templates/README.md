@@ -1,11 +1,11 @@
 Setup
 
 ```
-$ createdb <%=project%> 
 $ yarn
-$ ./ake seeds-dev
+$ psql -c 'create database <%=project%>'
+$ ./ake seeds:dev
 $ ./ake
-$ GraphQL Playground -> open this folder
+$ open .graphqlconfig with GraphQL Playground   // brew-cask(graphql-playground)
 
 $ Test: http post -v :3001/graphql query='{hello}'
 ```

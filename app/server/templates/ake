@@ -11,32 +11,14 @@ main() {
   nodemon
 }
 
-link() {
-  yarn link guserver guserver-auth-magic guserver-schema-mini guserver-process-upload
-  # fix graphql multiple instance
-  rm -rf ~/dev/one/guserver/packages/guserver/node_modules/graphql && ln -s `pwd`/node_modules/graphql ~/dev/one/guserver/packages/guserver/node_modules 
-  # typeorm use same version
-  rm -rf ~/dev/one/guserver/packages/guserver/node_modules/typeorm && ln -s `pwd`/node_modules/typeorm ~/dev/one/guserver/packages/guserver/node_modules
-
-  (cd uploads/processed && ln -sf ../../../shared/fixtures/images/* .)
-  #ln -s ../../../shared/fixtures/images/post0.jpg uploads/processed/post0@thumb.jpg
-}
-
-unlink() {
-  yarn unlink guserver guserver-auth-magic guserver-schema-mini guserver-process-upload
-  yarn
-}
-
 case "$1" in
   "" ) main ;;
   test ) jest ;;
   test:watch ) jest --watch ;;
   test:e2e ) jest --config jest-e2e.config.js ;;
+  test:model ) ts-node --files --type-check src/testmodel.ts ;;
+  test:fixtures ) ts-node --files src/shared/fixtures/fixtures.ts ;;
   seeds:dev ) ts-node --files scripts/seeds-dev.ts ./src/seeds.dev.ts ;;
-  build-docs ) guserver build-docs admin store ;;
+  build:docs ) guserver build-docs admin store ;;
   push ) ../ake "$@" ;;
-  link ) link ;;
-  unlink ) unlink ;;
-  testmodel ) ts-node --files --type-check src/testmodel.ts ;;
-  testfixtures ) ts-node --files src/shared/fixtures/fixtures.ts ;;
 esac
