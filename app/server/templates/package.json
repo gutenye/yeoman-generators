@@ -16,50 +16,41 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "jest": {
-    "moduleFileExtensions": [
-      "ts",
-      "js",
-      "json",
-      "node"
-    ],
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTest.ts",
-    "testMatch": [
-      "**/__tests__/**/*.test.(ts|js)"
-    ]
+  "nodemonConfig": {
+    "watch": ["src"],
+    "ext": "ts,graphql",
+    "ignore": ["src/**/*.test.ts"],
+    "exec": "ts-node --files --type-check src/server.ts"
   },
   "eslintConfig": {
     "extends": "guten-typescript"
   },
   "dependencies": {
-    "date-fns": "^2.0.0-alpha.7",
-    "express": "^4.16.3",
-    "fs-extra": "^5.0.0",
-    "graphql": "^0.13.2",
-    "graphql-relay": "^0.5.5",
-    "graphql-subscriptions": "^0.5.8",
-    "graphql-type-json": "^0.2.1",
-    "guserver": "^1.0.39",
-    "guserver-auth-magic": "^1.0.17",
-    "guserver-schema-mini": "^1.0.13",
-    "pdjs": "^1.0.6",
-    "pg": "^7.4.1",
-    "reflect-metadata": "^0.1.12",
-    "typeorm": "^0.2.0-alpha.19",
-    "bcrypt": "^2.0.1"
+    "apollo-server-express": "^0.0.0",
+    "date-fns": "^0.0.0",
+    "express": "^0.0.0",
+    "fs-extra": "^0.0.0",
+    "graphql": "^0.0.0",
+    "graphql-relay": "^0.0.0",
+    "graphql-subscriptions": "^0.0.0",
+    "graphql-type-json": "^0.0.0",
+    "merge-graphql-schames": "^0.0.0",
+    "pdjs": "^0.0.0",
+    "pg": "^0.0.0",
+    "promise-map-series": "^0.0.0",
+    "reflect-metadata": "^0.0.0",
+    "typeorm": "^0.0.0",
+    "bcrypt": "^0.0.0"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-guten-typescript": "^2.0.1",
-    "gudatagen": "^3.0.1",
-    "jest": "^22.4.3",
-    "nodemon": "^1.17.3",
-    "ts-jest": "^22.0.4",
-    "ts-node": "^6.0.1",
-    "typescript": "^2.7.1"
+    "eslint": "^0.0.0",
+    "eslint-config-guten-typescript": "^0.0.0",
+    "gudatagen": "^0.0.0",
+    "jest": "^0.0.0",
+    "nodemon": "^0.0.0",
+    "ts-jest": "^0.0.0",
+    "ts-node": "^0.0.0",
+    "typescript": "^0.0.0"
   },
   "author": "",
   "license": "ISC"

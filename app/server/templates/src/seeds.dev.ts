@@ -1,5 +1,5 @@
 require('gudatagen/lib/helpers/password')
-const { gen } = require('shared/fixtures')
+const { gen } = require('./fixtures')
 
 const data = gen.run({
   mode: 'server',

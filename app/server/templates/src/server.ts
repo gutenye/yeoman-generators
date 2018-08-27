@@ -1,21 +1,23 @@
 import 'pdjs'
-import * as fs from 'fs-extra'
-import startServer from 'guserver'
-import db from './db'
-import schema from './models/indexSchema'
-import apis from './apis'
-import auth from './auth'
-import connection from './vendor/typeorm'
+import options from './typeorm.config'
+import * as express from 'express'
+import { createConnection } from 'typeorm'
+import { ApolloServer } from 'apollo-server-express'
+import { typeDefs, resolvers } from 'models/schema'
 
-;(async function main() {
-  fs.ensureDirSync('uploads/processed')
+async function main() {
+  await createConnection(options)
 
-  const conn = await connection
-  startServer({
-    context: { conn },
-    db,
-    schema,
-    auth,
-    apis,
+  const port = process.env.PORT || 80
+  const server = new ApolloServer({ typeDefs, resolvers })
+  const app = express()
+
+  server.applyMiddleware({ app })
+  app.use('/fixtures', express.static('src/fixtures/images'))
+
+  app.listen({ port }, () => {
+    console.log(`> localhost:${port}/graphql`)
   })
-})()
+}
+
+main()

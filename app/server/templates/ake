@@ -8,7 +8,7 @@ export NODE_PATH="src:$NODE_PATH"
 export APP_ENV="node" # for gudatagen
 
 main() {
-  nodemon --exec ts-node --type-check src/server.ts
+  nodemon
 }
 
 link() {
@@ -29,13 +29,14 @@ unlink() {
 
 case "$1" in
   "" ) main ;;
-  t | test ) jest --watch ;;
+  test ) jest ;;
+  test:watch ) jest --watch ;;
+  test:e2e ) jest --config jest-e2e.config.js ;;
+  seeds:dev ) ts-node --files scripts/seeds-dev.ts ./src/seeds.dev.ts ;;
   build-docs ) guserver build-docs admin store ;;
-  # seeds-dev ) guserver seeds-dev ;;
-  seeds-dev ) ts-node --ignore=true node_modules/guserver/scripts/seeds-dev.ts ;;
   push ) ../ake "$@" ;;
   link ) link ;;
   unlink ) unlink ;;
-  testmodel ) ts-node --type-check src/testmodel.ts ;;
-  testfixtures ) ts-node src/shared/fixtures/fixtures.ts ;;
+  testmodel ) ts-node --files --type-check src/testmodel.ts ;;
+  testfixtures ) ts-node --files src/shared/fixtures/fixtures.ts ;;
 esac
