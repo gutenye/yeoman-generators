@@ -7,7 +7,11 @@ export NODE_PATH="src:$NODE_PATH"
 export APP_ENV="node" # for gudatagen
 
 main() {
-  nodemon
+  nodemon --exec ts-node --files --type-check src/server.ts
+}
+
+typeorm() {
+  ts-node --files --type-check ./node_modules/.bin/typeorm "$@"
 }
 
 case "$1" in
@@ -20,4 +24,6 @@ case "$1" in
   seeds:dev ) ts-node --files scripts/seeds-dev.ts ./src/seeds.dev.ts ;;
   build:docs ) guserver build-docs admin store ;;
   push ) ../ake "$@" ;;
+  typeorm ) shift; typeorm "$@" ;;
+  dump ) pg_dump erp > docs/latest.sql ;;
 esac

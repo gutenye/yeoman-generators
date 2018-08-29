@@ -7,6 +7,15 @@
   "scripts": {
     "build": "tsc"
   },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "ts",
+    "ignore": [
+      "src/**/*.test.ts"
+    ]
+  },
   "jest": {
     "moduleFileExtensions": [
       "ts",
@@ -27,6 +36,7 @@
   },
   "devDependencies": {
     "@types/jest": "^0.0.0",
+    "@types/node": "^0.0.0",
     "eslint-config-guten-typescript": "^0.0.0",
     "jest": "^0.0.0",
     "ts-jest": "^0.0.0",

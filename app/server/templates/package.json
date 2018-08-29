@@ -19,8 +19,7 @@
   "nodemonConfig": {
     "watch": ["src"],
     "ext": "ts,graphql",
-    "ignore": ["src/**/*.test.ts"],
-    "exec": "ts-node --files --type-check src/server.ts"
+    "ignore": ["src/**/*.test.ts"]
   },
   "eslintConfig": {
     "extends": "guten-typescript"
