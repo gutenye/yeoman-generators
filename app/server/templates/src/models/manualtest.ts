@@ -1,10 +1,10 @@
 // ./ake testmodel
 import 'pdjs'
-import connection from 'vendor/typeorm'
+import { createConnection } from 'typeorm'
 import { Order } from 'models'
 
 async function main() {
-  const conn = await connection
+  const conn = await createConnection()
 
   /*
   const input = {

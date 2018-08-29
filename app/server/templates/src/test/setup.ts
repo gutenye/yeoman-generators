@@ -1,5 +1,5 @@
 import 'pdjs'
-import createDbConnection from 'vendor/typeorm'
+import { createConnection } from 'typeorm'
 import { loadFixtures } from 'vendor/typeormUtils'
 
 global.loadFixtures = loadFixtures
@@ -7,7 +7,7 @@ global.loadFixtures = loadFixtures
 let conn
 
 beforeAll(async () => {
-  conn = await createDbConnection
+  conn = await createConnection()
   await conn.dropDatabase()
   await conn.synchronize()
 })

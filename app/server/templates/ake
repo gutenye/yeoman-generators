@@ -1,17 +1,22 @@
 #!/usr/bin/env bash
 
 export PORT=4002
-export DATABASE_URL=${DATABASE_URL-postgres://guten:guten@localhost/<%=project%>}
+export DATABASE_URL=${DATABASE_URL-postgres://localhost/<%=project%>}
 export PATH="node_modules/.bin:$PATH"
 export NODE_PATH="src:$NODE_PATH"
 export APP_ENV="node" # for gudatagen
+typeorm="ts-node ./node_modules/.bin/typeorm"
+ts_node="ts-node --files --type-check"
 
 main() {
-  nodemon --exec ts-node --files --type-check src/server.ts
+  nodemon --exec $ts_node src/server.ts
 }
 
-typeorm() {
-  ts-node --files --type-check ./node_modules/.bin/typeorm "$@"
+dump() {
+  pg_dump erp > docs/latest.sql
+  echo "> docs/latest.sql"
+  $ts_node scripts/dump-graphql-schema.ts docs/latest.graphql
+  echo "> docs/latest.graphql"
 }
 
 case "$1" in
@@ -19,11 +24,12 @@ case "$1" in
   test ) jest ;;
   test:watch ) jest --watch ;;
   test:e2e ) jest --config jest-e2e.config.js ;;
-  test:model ) ts-node --files --type-check src/testmodel.ts ;;
-  test:fixtures ) ts-node --files src/shared/fixtures/fixtures.ts ;;
-  seeds:dev ) ts-node --files scripts/seeds-dev.ts ./src/seeds.dev.ts ;;
+  test:model ) $ts_node src/testmodel.ts ;;
+  test:fixtures ) $ts_node src/shared/fixtures/fixtures.ts ;;
+  db:seeds-dev ) $ts_node scripts/seeds-dev.ts ./src/seeds.dev.ts ;;
   build:docs ) guserver build-docs admin store ;;
   push ) ../ake "$@" ;;
+  dump ) dump ;;
+  ts-node ) shift; $ts_node "$@" ;;
   typeorm ) shift; typeorm "$@" ;;
-  dump ) pg_dump erp > docs/latest.sql ;;
 esac
