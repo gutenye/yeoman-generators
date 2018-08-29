@@ -15,8 +15,9 @@ async function main() {
   await conn.synchronize()
   console.log('>> Load fixtures')
   await loadFixtures(fixtures, { clear: false, logging: true })
-  await conn.close()
   console.log('>> DONE')
+  await conn.close()
+  process.exit()
 }
 
 main()
