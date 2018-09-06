@@ -9,8 +9,7 @@ const options = {
 
 if (process.env.NODE_ENV === 'test') {
   Object.assign(options, {
-    type: 'sqlite',
-    database: ':memory:',
+    url: process.env.DATABASE_URL || 'postgres://root:root@db/test',
     logging: false,
   })
 }

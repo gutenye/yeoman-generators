@@ -21,11 +21,12 @@ dump() {
 
 case "$1" in
   "" ) main ;;
-  test ) jest ;;
-  test:watch ) jest --watch ;;
-  test:e2e ) jest --config jest-e2e.config.js ;;
-  test:model ) $ts_node src/testmodel.ts ;;
+  t | test ) jest ;;
+  test:watch ) DATABASE_URL="postgres://localhost/<%=project%>test" jest --watch ;;  # NODE_ENV=test is set by jest
+  test:e2e ) DABASE_URL="postgres://localhost/<%=project%>test" jest --config jest-e2e.config.js ;;
+  test:setup ) psql -c 'CREATE DATABASE <%=project%>test' ;;
   test:fixtures ) $ts_node src/shared/fixtures/fixtures.ts ;;
+  db:setup ) psql -c 'CREATE DATABASE <%=project%>' ;;
   db:seeds-dev ) $ts_node scripts/seeds-dev.ts ./src/seeds.dev.ts ;;
   build:docs ) guserver build-docs admin store ;;
   push ) ../ake "$@" ;;

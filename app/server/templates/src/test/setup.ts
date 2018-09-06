@@ -2,6 +2,7 @@ import 'pdjs'
 import { createConnection } from 'typeorm'
 import { loadFixtures } from 'vendor/typeormUtils'
 
+// Global helpers
 global.loadFixtures = loadFixtures
 
 let conn

@@ -38,4 +38,6 @@ async function main() {
   //pd('shipment.operator', await (await order.shipment).operator)
 }
 
-main()
+if (require.main === module) {
+  main()
+}

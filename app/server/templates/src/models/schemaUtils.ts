@@ -1,6 +1,7 @@
-import { omitBy, isUndefined } from 'lodash'
+import QueryUtilsBase from 'vendor/QueryUtilsBase'
+import SchemaUtils from 'vendor/SchemaUtils'
 import { parse, startOfMonth, endOfMonth } from 'date-fns'
-import QueryUtilsBase from 'guserver/lib/polyfill/QueryUtilsBase'
+import { appRc } from 'vendor'
 
 const DEFAULT_LIMIT = 10
 
@@ -25,20 +26,14 @@ type inMonthT = {
   field: string
 }
 
-export default class QueryUtils extends QueryUtilsBase {
-  query: any
-  args: any
-
+class QueryUtils extends QueryUtilsBase {
   andWhere(a, b) {
     this.query.andWhere(a, b)
     return this
   }
 
   id() {
-    const {
-      query,
-      args: { id },
-    } = this
+    const { query, args: { id } } = this
     if (id) {
       query.andWhere('id = :id', { id })
     }
@@ -46,10 +41,7 @@ export default class QueryUtils extends QueryUtilsBase {
   }
 
   pagination() {
-    let {
-      query,
-      args: { limit, offset, page },
-    } = this
+    let { query, args: { limit, offset, page } } = this
     limit = limit || DEFAULT_LIMIT
     if (offset) {
       query.skip(offset)
@@ -65,10 +57,7 @@ export default class QueryUtils extends QueryUtilsBase {
   // q({fields: ['name', 'description']})
   // WHERE name ~ '.*q.*' OR description ~ '.*q.*'
   q({ fields }: qT) {
-    const {
-      query,
-      args: { q },
-    } = this
+    const { query, args: { q } } = this
     if (q) {
       fields.forEach((field, i) => {
         const method = i === 0 ? 'andWhere' : 'orWhere'
@@ -80,10 +69,7 @@ export default class QueryUtils extends QueryUtilsBase {
 
   // tags()
   tags() {
-    const {
-      query,
-      args: { tags },
-    } = this
+    const { query, args: { tags } } = this
     if (tags) {
       query.andWhere(`tags @> :tags`, { tags: JSON.stringify(tags.split(',')) })
     }
@@ -92,10 +78,7 @@ export default class QueryUtils extends QueryUtilsBase {
 
   // category('China.')
   category() {
-    const {
-      query,
-      args: { category },
-    } = this
+    const { query, args: { category } } = this
     if (category) {
       query.andWhere(`category ~ :pattern`, { pattern: `${category}$` })
     }
@@ -104,10 +87,7 @@ export default class QueryUtils extends QueryUtilsBase {
 
   // inMonth({field: 'createdAt'})
   inMonth({ field }: inMonthT) {
-    const {
-      query,
-      args: { inMonth },
-    } = this
+    const { query, args: { inMonth } } = this
     if (inMonth) {
       const month = parse(inMonth, 'YYYY/MM', new Date())
       query
@@ -117,3 +97,5 @@ export default class QueryUtils extends QueryUtilsBase {
     return this
   }
 }
+
+export default new SchemaUtils(QueryUtils, appRc.permissions)
