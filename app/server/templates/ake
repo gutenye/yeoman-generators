@@ -13,7 +13,8 @@ main() {
 }
 
 dump() {
-  pg_dump erp > docs/latest.sql
+  pg_dump --schema-only erp > docs/latest.sql
+  sed -i 's/guten/root/g' docs/latest.sql
   echo "> docs/latest.sql"
   $ts_node scripts/dump-graphql-schema.ts docs/latest.graphql
   echo "> docs/latest.graphql"
@@ -23,11 +24,14 @@ case "$1" in
   "" ) main ;;
   t | test ) jest ;;
   test:watch ) DATABASE_URL="postgres://localhost/<%=project%>test" jest --watch ;;  # NODE_ENV=test is set by jest
-  test:e2e ) DABASE_URL="postgres://localhost/<%=project%>test" jest --config jest-e2e.config.js ;;
+  test:e2e ) DABASE_URL="postgres://localhost/<%=project%>test" jest --config jestE2e.config.js ;;
+  test:e2e:debug ) DEBUG=1 DABASE_URL="postgres://localhost/<%=project%>test" jest --config jestE2e.config.js ;;
   test:setup ) psql -c 'CREATE DATABASE <%=project%>test' ;;
   test:fixtures ) $ts_node src/shared/fixtures/fixtures.ts ;;
-  db:setup ) psql -c 'CREATE DATABASE <%=project%>' ;;
+  db:setup ) psql -c 'CREATE DATABASE <%=project%>'; typeorm schema:sync ;;
   db:seeds-dev ) $ts_node scripts/seeds-dev.ts ./src/seeds.dev.ts ;;
+  db:reset ) typeorm schema:drop; typeorm schema:sync ;; 
+  db:sql) psql <%=project%> ;;
   build:docs ) guserver build-docs admin store ;;
   push ) ../ake "$@" ;;
   dump ) dump ;;
