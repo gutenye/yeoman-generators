@@ -40,7 +40,8 @@
     "promise-map-series": "^0.0.0",
     "reflect-metadata": "^0.0.0",
     "typeorm": "^0.0.0",
-    "bcrypt": "^0.0.0"
+    "bcrypt": "^0.0.0",
+    "config": "^0.0.0"
   },
   "devDependencies": {
     "eslint": "^0.0.0",
@@ -50,7 +51,8 @@
     "nodemon": "^0.0.0",
     "ts-jest": "^0.0.0",
     "ts-node": "^0.0.0",
-    "typescript": "^0.0.0"
+    "typescript": "^0.0.0",
+    "@types/config": "^0.0.0"
   },
   "author": "",
   "license": "ISC"
