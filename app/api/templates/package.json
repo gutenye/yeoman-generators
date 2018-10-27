@@ -34,7 +34,7 @@
     "graphql-redis-subscriptions": "^0.0.0",
     "graphql-relay": "^0.0.0",
     "graphql-type-json": "^0.0.0",
-    "merge-graphql-schames": "^0.0.0",
+    "merge-graphql-schemas": "^0.0.0",
     "pdjs": "^0.0.0",
     "pg": "^0.0.0",
     "promise-map-series": "^0.0.0",

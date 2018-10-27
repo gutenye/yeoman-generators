@@ -27,12 +27,4 @@ module.exports = class extends Generator {
     this.spawnCommandSync('ncu', ['-u'])
     this.yarnInstall()
   }
-
-  end() {
-    const {username, project, gitUrl, subproject} = this.props
-    this.spawnCommandSync('flow-typed', ['install'])
-    this.spawnCommandSync('git', ['init'])
-    this.spawnCommandSync('git', ['remote', 'remove', 'origin'])
-    this.spawnCommandSync('git', ['remote', 'add', 'origin', `${gitUrl}:${username}/${project}-${subproject}.git`])
-  }
 }

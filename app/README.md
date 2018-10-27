@@ -1,8 +1,8 @@
 $ mkdir hello && cd hello
 $ yo guapp:base
 
-$ mkdir server && cd server
-$ yo guapp:server
+$ mkdir api && cd api
+$ yo guapp:api
 
 $ mkdir web && cd web
 $ yo guapp:web
