@@ -1,29 +1,30 @@
 import React from '@/vendor'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-// import BrowserRouter from 'gureact/BrowserRouter'
-import PrivateRoute from 'gureact/PrivateRoute'
-import WrapperRoute from 'gureact/WrapperRoute'
-import GoogleAnalytics from 'gureact/GoogleAnalytics'
+// import BrowserRouter from 'gureact/react-router/BrowserRouter'
+import Route2 from 'gureact/react-router/Route2'
+import PrivateRoute from 'gureact/react-router/PrivateRoute'
+import GoogleAnalyticsRoute from 'gureact/react-router/GoogleAnalyticsRoute'
 
+import DefaultLayout from './layouts/DefaultLayout'
+import BlankLayout from './layouts/BlankLayout'
 import LoadAuth from './pages/Auth/LoadAuth'
 import HomePage from './pages/Home/HomePage'
-import LoginPage from './pages/Auth/LoginPage'
-import AppLayout from './pages/AppLayout'
+import AuthPage from './pages/Auth/AuthPage'
 import './App.css.tsx'
 
 export default (
   <LoadAuth>
     <BrowserRouter>
-      <WrapperRoute wrapper={GoogleAnalytics}>
+      <GoogleAnalyticsRoute>
         <Switch>
-          <Route path="/login" component={LoginPage} />
+          <Route2 path="/auth" component={AuthPage} layout={BlankLayout} />
           {/* <PrivateRoute wrapper={AppLayout}> */}
-          <WrapperRoute wrapper={AppLayout}>
+          <Route2 layout={DefaultLayout}>
             <Route path="/" component={HomePage} exact />
-          </WrapperRoute>
+          </Route2>
           {/* </PrivateRoute> */}
         </Switch>
-      </WrapperRoute>
+      </GoogleAnalyticsRoute>
     </BrowserRouter>
   </LoadAuth>
 )

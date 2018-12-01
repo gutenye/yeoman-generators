@@ -3,7 +3,7 @@ import React, { observer, styled } from '@/vendor'
 // import { List, InputItem, WhiteSpace, Button, Toast } from 'antd-mobile'
 import { auth } from '@/states'
 import { Formik, Form } from 'formik'
-import { RouteComponentProps } from '@/types'
+import { RouteComponentProps } from 'react-router-dom'
 
 interface Props {
   login: Function
@@ -26,6 +26,7 @@ class LoginComponent extends React.Component<Props & RouteComponentProps<{}>> {
           return (
             <Root className="Login-main">
               <Form className="Login-form">
+                <div>Login</div>
                 {/* <List> */}
                 {/* <FieldValue name="username" placeholder="用户名" component={InputItem} /> */}
                 {/* <FieldValue name="password" placeholder="密码" component={InputItem} type="password" /> */}

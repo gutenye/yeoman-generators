@@ -1,7 +1,5 @@
-export { RouteComponentProps } from 'react-router-dom'
 // export { InjectedTranslateProps } from 'react-i18next'
-import * as ReactApollo from 'react-apollo'
-export type QueryResult = ReactApollo.QueryResult
+
 // export { Props as AppHomeComponentProps } from 'components/AppHomeComponent'
 
 export type ID = string

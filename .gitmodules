@@ -1,0 +1,3 @@
+[submodule "app/web/templates/app/web/templates/src/gureact"]
+	path = app/web/templates/app/web/templates/src/gureact
+	url = git@git.guten.me:gutenye/gureact.git

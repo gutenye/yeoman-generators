@@ -48,7 +48,6 @@
     "frisbee": "^2.0.5",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
-    "gureact": "^1.1.6",
     "i18next": "^12.1.0",
     "i18next-browser-languagedetector": "^2.2.4",
     "i18next-fetch-backend": "^2.0.0",
@@ -69,7 +68,8 @@
     "react-tap-event-plugin": "^3.0.3",
     "recompose": "^0.30.0",
     "styled-components": "^4.1.2",
-    "subscriptions-transport-ws": "^0.9.15"
+    "subscriptions-transport-ws": "^0.9.15",
+    "yup": "^0.26.6"
   },
   "devDependencies": {
     "@craco/craco": "^3.1.1",
@@ -82,6 +82,7 @@
     "@types/react": "^16.4.14",
     "@types/react-dom": "^16.0.7",
     "@types/react-helmet": "^5.0.7",
+    "@types/react-router-dom": "^4.3.1",
     "@types/recompose": "^0.30.0",
     "@types/styled-components": "^4.1.2",
     "craco-preact": "^1.0.0",

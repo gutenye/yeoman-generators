@@ -13,7 +13,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "gureact": ["src/gureact"]
+      "gureact/*": ["src/gureact/*"]
     },
     "experimentalDecorators": true,
     "noImplicitAny": false, // https://github.com/Microsoft/TypeScript/issues/15031

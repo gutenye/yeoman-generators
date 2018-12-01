@@ -2,6 +2,7 @@
   "name": "generator-guapp",
   "version": "0.0.1",
   "description": "Guten's generator",
+  "license": "MIT",
   "main": "index.js",
   "dependencies": {
     "lodash": "^4.17.4",
