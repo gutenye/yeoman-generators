@@ -1,14 +1,6 @@
-import React, { client, update } from 'vendor'
-import { app } from '@/state'
-import {
-  allCustomersGql,
-  customerChangeGql,
-  allProductsGql,
-  productChangeGql,
-  allInventoriesGql,
-  inventoryChangeGql,
-  productAllOptionsGql,
-} from 'query'
+import React, { client, update } from '@/vendor'
+// import { app } from '@/states'
+// import { allCustomersGql } from '@/query'
 
 export default class PreloadData extends React.Component<any> {
   state = {
@@ -28,6 +20,6 @@ export default class PreloadData extends React.Component<any> {
   }
 
   async preloadData() {
-    // preload data  
+    // preload data
   }
 }

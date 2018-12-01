@@ -1,8 +1,27 @@
 {
+  "exclude": [
+    // Typescript parse all files (include not used files)
+    // causes antd-mobile not found, ...
+    "./src/gureact/*"
+  ],
   "compilerOptions": {
+    "lib": [
+      "dom",
+      "esnext", // https://github.com/facebook/create-react-app/issues/5683
+      "esnext.asynciterable" // https://github.com/apollographql/graphql-subscriptions/issues/83
+    ],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
-    }
+      "@/*": ["src/*"],
+      "gureact": ["src/gureact"]
+    },
+    "experimentalDecorators": true,
+    "noImplicitAny": false, // https://github.com/Microsoft/TypeScript/issues/15031
+    "noImplicitReturns": true,
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin"
+      }
+    ]
   }
 }

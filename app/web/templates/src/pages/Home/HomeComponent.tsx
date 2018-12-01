@@ -1,17 +1,12 @@
-import React, { observer, styled } from 'vendor'
+import React, { observer, styled } from '@/vendor'
 
+@observer
 class HomeComponent extends React.Component {
   render() {
-    const { users } = this.props
-    return (
-      <Root>
-        hello
-      </Root>
-    )
+    return <Root>hello</Root>
   }
 }
 
-const Root = styled.div`
-`
+const Root = styled.div``
 
 export default HomeComponent

@@ -1,8 +1,7 @@
-import { injectGlobal } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
-/* Reset */
 // eslint-disable-next-line
-injectGlobal`
+export default createGlobalStyle`
   * { padding: 0; margin: 0; box-sizing: border-box; }
   a, a:visited { text-decoration: none; color: inherit; }
   img, video { max-width: 100%; vertical-align: bottom; }

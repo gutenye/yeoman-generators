@@ -1,4 +1,4 @@
-import { graphql, gql, compose } from 'vendor'
+import { graphql, gql, compose } from '@/vendor'
 import LoginComponent from './LoginComponent'
 
 const MutationLogin = graphql(
@@ -14,7 +14,7 @@ const MutationLogin = graphql(
     }
   `,
   {
-    props: ({ mutate }) => ({
+    props: ({ mutate }: any) => ({
       login: args => mutate({ variables: args }),
     }),
   }

@@ -1,9 +1,9 @@
-import React, { observer, styled } from 'vendor'
-import FieldValue from 'gureact2/formik/FieldValue'
-import { List, InputItem, WhiteSpace, Button, Toast } from 'antd-mobile'
-import { auth } from '@/state'
+import React, { observer, styled } from '@/vendor'
+// import FieldValue from 'gureact/formik/FieldValue'
+// import { List, InputItem, WhiteSpace, Button, Toast } from 'antd-mobile'
+import { auth } from '@/states'
 import { Formik, Form } from 'formik'
-import { RouteComponentProps } from 'types'
+import { RouteComponentProps } from '@/types'
 
 interface Props {
   login: Function
@@ -26,14 +26,14 @@ class LoginComponent extends React.Component<Props & RouteComponentProps<{}>> {
           return (
             <Root className="Login-main">
               <Form className="Login-form">
-                <List>
-                  <FieldValue name="username" placeholder="用户名" component={InputItem} />
-                  <FieldValue name="password" placeholder="密码" component={InputItem} type="password" />
-                </List>
-                <WhiteSpace size="xl" />
-                <Button type="primary" loading={isSubmitting} onClick={handleSubmit}>
-                  登入
-                </Button>
+                {/* <List> */}
+                {/* <FieldValue name="username" placeholder="用户名" component={InputItem} /> */}
+                {/* <FieldValue name="password" placeholder="密码" component={InputItem} type="password" /> */}
+                {/* </List> */}
+                {/* <WhiteSpace size="xl" /> */}
+                {/* <Button type="primary" loading={isSubmitting} onClick={handleSubmit}> */}
+                {/* 登入 */}
+                {/* </Button> */}
               </Form>
             </Root>
           )
@@ -48,7 +48,7 @@ class LoginComponent extends React.Component<Props & RouteComponentProps<{}>> {
     actions.setSubmitting(false)
     auth.login(res)
     if (res.err) {
-      Toast.fail(res.err.message)
+      // Toast.fail(res.err.message)
     } else {
       history.push('/')
     }

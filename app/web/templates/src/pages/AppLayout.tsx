@@ -1,5 +1,4 @@
-
-import React, { Helmet, observer } from 'vendor'
+import React, { Helmet, observer } from '@/vendor'
 import PreloadData from './PreloadData'
 //import { Layout } from 'gureact/antd'
 //import drawer from './Drawer'

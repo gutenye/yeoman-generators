@@ -1,2 +1,2 @@
 export { default as auth } from './authState'
-export { client, graphql } from '../apollo'
+export { default as local } from './localState'

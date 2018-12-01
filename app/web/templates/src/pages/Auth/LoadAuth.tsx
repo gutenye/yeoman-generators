@@ -1,5 +1,5 @@
-import React, { client, gql } from 'vendor'
-import { auth } from '@/state'
+import React, { client, gql } from '@/vendor'
+import { auth } from '@/states'
 
 const QueryLoadAuth = gql`
   query LoadAuth {

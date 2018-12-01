@@ -10,10 +10,11 @@ module.exports = {
   webpack: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
+      gureact: path.resolve(__dirname, 'src/gureact'),
     },
     plugins: [
       // new WebpackBundleAnalyzer.BundleAnalyzerPlugin(),
       new WebpackBar({ profile: true }),
     ],
-  }
+  },
 }
