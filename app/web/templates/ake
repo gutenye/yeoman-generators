@@ -5,7 +5,7 @@ export PATH="node_modules/.bin:$PATH"
 export NODE_PATH="node_modules:$NODE_PATH" # for design mode with symlinked gureact needs react-scripts/webpack.config.dev
 
 main() {
-  npm start
+  react-app-rewired start
 }
 
 link() {
@@ -17,8 +17,8 @@ unlink() {
   yarn add gureact
 }
 
-design-gen-data() {
-  NODE_PATH="src:/usr/local/lib/node_modules:node_modules" babel-node --presets env src/design/genData.js
+fix() {
+  sed 's/row: object/row: any/g' -i node_modules/@types/react-table/index.d.ts
 }
 
 case "$1" in
@@ -31,4 +31,8 @@ case "$1" in
   link ) link ;;
   unlink ) unlink ;;
   analyze ) source-map-explorer build/static/js/main.*.{js,map} ;;
+  docs ) styleguidist server ;;
+  lint ) eslint --ext .ts,.tsx . ;;
+  fix ) fix ;;
+  * ) echo 'Unkown command' ;;
 esac

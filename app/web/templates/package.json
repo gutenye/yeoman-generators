@@ -2,31 +2,39 @@
   "name": "web",
   "version": "0.0.1",
   "scripts": {
-    "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "eject": "react-app-rewired eject",
-    "test": "react-app-rewired test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test --env=jsdom",
     "lint": "npm run lint:js & npm run lint:css",
     "lint:js": "eslint src/**/*.js",
-    "lint:css": "scss-lint"
+    "lint:css": "scss-lint",
+    "build:docs": "styleguidist build"
+  },
+  "apollo": {
+    "schemas": {
+      "default": {
+        "endpoint": "http://localhost:4011/graphql"
+      }
+    }
   },
   "prettier": {
     "semi": false,
     "singleQuote": true,
-    "trailingComma": "es5"
+    "trailingComma": "es5",
+    "printWidth": 120
   },
   "eslintConfig": {
-    "extends": "guten-react"
+    "extends": "guten-typescript-react"
   },
   "proxy": {
     "/api": {
-      "target": "http://localhost:4001",
+      "target": "http://localhost:4011",
       "pathRewrite": {
-        "^/api" : ""
+        "^/api": ""
       }
     },
     "/uploads": {
-      "target": "http://localhost:4001"
+      "target": "http://localhost:4011"
     }
   },
   "dependencies": {
@@ -57,18 +65,20 @@
     "react-ga": "^0.0.0"
   },
   "devDependencies": {
+    "@types/jest": "^23.3.2",
+    "@types/lodash": "^4.14.116",
+    "@types/node": "^10.9.4",
+    "@types/react": "^16.4.14",
+    "@types/react-dom": "^16.0.7",
+    "@types/react-router-dom": "^4.3.0",
     "react-scripts": "^0.0.0",
-    "react-app-rewired": "^0.0.0",
-    "react-app-rewire-guten": "^0.0.0",
-    "flow-bin": "^0.0.0",
-    "flow-typed": "^0.0.0",
-    "eslint": "^0.0.0",
-    "babel-eslint": "^0.0.0",
-    "eslint-config-guten-react": "^0.0.0",
-    "eslint-config-prettier": "^0.0.0",
-    "eslint-plugin-import": "^0.0.0",
-    "eslint-plugin-react": "^0.0.0",
-    "source-map-explorer": "^0.0.0"
+    "@craco/craco "^0.0.0",
+    "source-map-explorer": "^0.0.0",
+    "react-docgen-typescript": "^1.8.1",
+    "jest": "^23.5.0",
+    "ts-jest": "^23.1.4",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.0.3"
   },
   "description": "hello",
   "license": "MIT"
