@@ -2,10 +2,12 @@ const path = require('path')
 const Preact = require('craco-preact')
 const WebpackBundleAnalyzer = require('webpack-bundle-analyzer')
 const WebpackBar = require('webpackbar')
+const Antd = require('craco-antd')
 
 module.exports = {
   plugins: [
-    // { plugin: Preact }
+    { plugin: Antd },
+    // { plugin: Preact },
   ],
   webpack: {
     alias: {
