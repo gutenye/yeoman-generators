@@ -1,19 +1,14 @@
 import React from 'react'
 import Logo from './Logo'
 import { Space } from '@/components'
-import { Icon } from 'antd'
-import { MenuWithItems } from 'gureact/antd'
-
-const items = [
-  { text: 'Home', icon: <Icon type="home" />, to: '/' },
-  { text: 'Users', icon: <Icon type="user" />, items: [{ text: 'View', to: '/user' }, { text: 'Edit' }] },
-]
+import { MenuWithConfig } from 'gureact/antd'
+import routes from '@/config/routes.config'
 
 const Drawer = () => (
   <div>
     <Logo>App</Logo>
     <Space size={2} />
-    <MenuWithItems mode="inline" items={items} />
+    <MenuWithConfig mode="inline" items={routes} />
   </div>
 )
 

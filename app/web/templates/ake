@@ -8,15 +8,6 @@ main() {
   craco start
 }
 
-link() {
-  yarn link gureact
-}
-
-unlink() {
-  yarn unlink gureact
-  yarn add gureact
-}
-
 fix() {
   sed 's/row: object/row: any/g' -i node_modules/@types/react-table/index.d.ts
 }
