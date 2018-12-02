@@ -1,7 +1,7 @@
 import { observable } from 'mobx'
 
 class AuthState {
-  @observable user = null
+  @observable user: any = null
 
   isLoggedIn = () => {
     return !!this.user

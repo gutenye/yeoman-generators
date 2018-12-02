@@ -1,5 +1,7 @@
-import { graphql, gql, compose } from '@/vendor'
 import LoginComponent from './LoginComponent'
+import gql from 'graphql-tag'
+import { compose } from 'recompose'
+import { graphql } from 'react-apollo'
 
 const MutationLogin = graphql(
   gql`
@@ -20,4 +22,4 @@ const MutationLogin = graphql(
   }
 )
 
-export default compose(MutationLogin)(LoginComponent)
+export default compose<any, any>(MutationLogin)(LoginComponent)

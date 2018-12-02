@@ -1,4 +1,4 @@
-import React, { client, update } from '@/vendor'
+import React from 'react'
 // import { app } from '@/states'
 // import { allCustomersGql } from '@/query'
 

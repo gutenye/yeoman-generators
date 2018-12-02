@@ -1,4 +1,4 @@
-import { graphql, gql, compose } from '@/vendor'
+import { compose } from 'recompose'
 import HomeComponent from './HomeComponent'
 
 export default compose()(HomeComponent)

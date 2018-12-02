@@ -1,7 +1,8 @@
-import React, { Helmet, observer } from '@/vendor'
+import React from 'react'
+import Helmet from 'react-helmet'
 import PreloadData from '../pages/PreloadData'
-//import { Layout } from 'gureact/antd'
-//import drawer from './Drawer'
+import { observer } from 'mobx-react'
+
 const DevTools = process.env.NODE_ENV !== 'production' ? require('mobx-react-devtools').default : null
 
 @observer

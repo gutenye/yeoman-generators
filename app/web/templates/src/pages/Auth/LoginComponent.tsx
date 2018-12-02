@@ -1,4 +1,6 @@
-import React, { observer, styled } from '@/vendor'
+import React from 'react'
+import styled from 'styled-components'
+import { observer } from 'mobx-react'
 // import FieldValue from 'gureact/formik/FieldValue'
 // import { List, InputItem, WhiteSpace, Button, Toast } from 'antd-mobile'
 import { auth } from '@/states'

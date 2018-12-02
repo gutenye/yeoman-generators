@@ -1,4 +1,6 @@
-import React, { client, gql } from '@/vendor'
+import React from 'react'
+import gql from 'graphql-tag'
+import { client } from '@/apollo'
 import { auth } from '@/states'
 
 const QueryLoadAuth = gql`

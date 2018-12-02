@@ -1,8 +1,8 @@
-import React from '@/vendor'
-import { Layout } from 'antd'
+import React from 'react'
 import Drawer from './Drawer/Drawer'
 import Footer from './Footer'
 import Header from './Header'
+import { Layout } from 'antd'
 
 const AdminLayout = props => (
   <Layout>

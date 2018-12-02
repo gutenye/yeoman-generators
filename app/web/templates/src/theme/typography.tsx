@@ -1,4 +1,4 @@
-import { styled } from '@/vendor'
+import styled from 'styled-components'
 import { fontWeightValues } from './utils'
 
 interface Props {

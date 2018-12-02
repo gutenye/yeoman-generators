@@ -1,9 +1,11 @@
-import React, { observer, styled } from '@/vendor'
+import React from 'react'
+import styled from 'styled-components'
+import { observer } from 'mobx-react'
 
 @observer
 class HomeComponent extends React.Component {
   render() {
-    return <Root>hello</Root>
+    return <Root>HOME</Root>
   }
 }
 

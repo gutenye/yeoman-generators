@@ -1,3 +1,3 @@
-import React from '@/vendor'
+import React from 'react'
 
 export default () => <div />
