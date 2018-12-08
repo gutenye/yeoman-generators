@@ -15,7 +15,12 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copyTpl(`${this.templatePath()}/**`, this.destinationPath(), this.props, {}, {globOptions: {dot: true}})
+    this.fs.copyTpl(`${this.templatePath()}/**`, this.destinationPath(), this.props, {}, {
+      globOptions: {
+        dot: true,
+        ignore: ['**/node_modules/**', '**/gureact/**', '**/yarn.lock'],
+      }
+    })
     try {
       fs.symlinkSync('../shared', 'shared')
       fs.symlinkSync('/Users/guten/dev/one/gureact/src', 'gureact')
