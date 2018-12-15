@@ -21,12 +21,14 @@ module.exports = class extends Generator {
         ignore: ['**/node_modules/**', '**/gureact/**', '**/yarn.lock'],
       }
     })
+      /*
     try {
       fs.symlinkSync('../shared', 'shared')
       fs.symlinkSync('/Users/guten/dev/one/gureact/src', 'gureact')
     } catch (e) {
       // catch EEXIST
     }
+    */
   }
 
   install() {

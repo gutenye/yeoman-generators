@@ -1,0 +1,3 @@
+[submodule "web/src/gureact"]
+	path = web/src/gureact
+	url = git@git.guten.me:gutenye/gureact.git

@@ -1,4 +1,3 @@
-import React from 'react'
 import DefaultLayout from '@/layouts/DefaultLayout'
 import AdminLayout from '@/layouts/AdminLayout/AdminLayout'
 import BlankLayout from '@/layouts/BlankLayout'
