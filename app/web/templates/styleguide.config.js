@@ -12,7 +12,7 @@ module.exports = {
   // prettier-ignore
   sections: [
     //{ name: 'OrderTable', content: 'src/components/OrderTable/README.md', components: 'src/components/OrderTable/OrderTable.js' },
-    // { name: 'ActionsBar', content: 'src/gureact2/antd-mobile/ActionsBar/README.md', components: 'src/gureact2/antd-mobile/ActionsBar/[A-Z]*.tsx' },
+    // { name: 'ActionsBar', content: 'src/gureact/antd-mobile/ActionsBar/README.md', components: 'src/gureact/antd-mobile/ActionsBar/[A-Z]*.tsx' },
   ],
 
   // remove default README.md
@@ -25,10 +25,10 @@ module.exports = {
       heading: {
         '& + ul > $isChild': {
           display: 'none',
-        }
+        },
       },
     },
   },
 
-  webpackConfig: require('./config-overrides')(require('react-scripts/config/webpack.config.dev'), 'development')
+  webpackConfig: require('./config-overrides')(require('react-scripts/config/webpack.config.dev'), 'development'),
 }

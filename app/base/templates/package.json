@@ -1,23 +1,27 @@
 {
   "name": "<%=project%>",
   "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "precommit": "lint-staged"
+  "author": "Guten",
+  "license": "MIT",
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5"
   },
   "lint-staged": {
-    "*/src/**/*.{js,jsx,json,css}": [
-      "prettier --no-semi --single-quote --trailing-comma=es5 --write",
+    "*.{js,jsx,ts,tsx,json,css}": [
+      "prettier --write",
       "git add"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "devDependencies": {
     "husky": "^0.0.0",
     "lint-staged": "^0.0.0",
-    "prettier": "^0.0.0",
-    "bcrypt": "^0.0.0",
-    "gudatagen": "^0.0.0",
-    "faker": "^0.0.0",
-    "babel-preset-env": "^0.0.0"
+    "prettier": "^0.0.0"
   }
 }

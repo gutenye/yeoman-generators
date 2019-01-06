@@ -5,8 +5,8 @@ export DATABASE_URL=${DATABASE_URL-postgres://localhost/<%=project%>}
 export PATH="node_modules/.bin:$PATH"
 export NODE_PATH="src:$NODE_PATH"
 export APP_ENV="node" # for gudatagen
-typeorm="ts-node ./node_modules/.bin/typeorm"
 ts_node="ts-node --files --type-check"
+typeorm="$ts_node ./node_modules/.bin/typeorm"
 
 main() {
   nodemon --exec $ts_node src/server.ts

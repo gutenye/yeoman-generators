@@ -36,22 +36,22 @@ class App extends React.Component {
 
   render() {
     return (
-      <ApolloProvider client={client}>
-        <ThemeProvider theme={theme}>
-          <I18nextProvider i18n={i18n}>
-            <LoadAuth>
-              <BrowserRouter>
-                <GoogleAnalyticsRoute>
-                  <div>
-                    <GlobalStyle />
+      <>
+        <GlobalStyle />
+        <ApolloProvider client={client}>
+          <ThemeProvider theme={theme}>
+            <I18nextProvider i18n={i18n}>
+              <LoadAuth>
+                <BrowserRouter>
+                  <GoogleAnalyticsRoute>
                     <RouteWithConfig routes={routes} />
-                  </div>
-                </GoogleAnalyticsRoute>
-              </BrowserRouter>
-            </LoadAuth>
-          </I18nextProvider>
-        </ThemeProvider>
-      </ApolloProvider>
+                  </GoogleAnalyticsRoute>
+                </BrowserRouter>
+              </LoadAuth>
+            </I18nextProvider>
+          </ThemeProvider>
+        </ApolloProvider>
+      </>
     )
   }
 }
