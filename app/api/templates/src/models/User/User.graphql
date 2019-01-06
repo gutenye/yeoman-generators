@@ -1,3 +1,26 @@
 type User {
+  id: ID!
   username: String
 }
+
+# type Query {
+#  user(id: ID!): User
+#  users(q: String, sort: String, page: Int, limit: Int): UserConn
+#   allUsers: [User]
+# }
+
+# type Mutation {
+#   createUser(input: CreateUserInput): User
+#   updateUser(id: ID!, input: UpdateUserInput): User
+#   deleteUser(id: ID!): User
+# }
+
+# type UserConn {
+#   nodes: [User]
+#   pages: Int
+#   totalCount: Int
+# }
+
+# input CreateUserInput {
+#   username: String
+# }

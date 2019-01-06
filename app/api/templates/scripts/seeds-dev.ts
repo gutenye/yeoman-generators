@@ -5,7 +5,7 @@ import * as path from 'path'
 
 async function main() {
   const args = process.argv.slice(2)
-  const fixtures = require(path.resolve(args[0]))
+  const fixtures = require(path.resolve(args[0])).default
 
   const conn = await createConnection()
   console.log('>> Drop database')
