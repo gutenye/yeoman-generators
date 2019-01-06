@@ -1,5 +1,5 @@
-require('gudatagen/lib/helpers/password')
-const { gen } = require('./fixtures')
+import 'gudatagen/lib/helpers/password'
+import { gen } from './fixtures'
 
 const data = gen.run({
   mode: 'server',

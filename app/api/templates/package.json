@@ -24,6 +24,14 @@
   "eslintConfig": {
     "extends": "guten-typescript"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.ts": ["prettier --write", "git add"]
+  },
   "dependencies": {
     "apollo-server-express": "^0.0.0",
     "consola": "^0.0.0",
@@ -52,7 +60,9 @@
     "ts-jest": "^0.0.0",
     "ts-node": "^0.0.0",
     "typescript": "^0.0.0",
-    "@types/config": "^0.0.0"
+    "@types/config": "^0.0.0",
+    "husk": "^0.0.0",
+    "lint-staged": "^0.0.0"
   },
   "author": "",
   "license": "ISC"

@@ -1,12 +1,6 @@
 {
   "javascript.validate.enable": false,
   "editor.formatOnSave": true,
-  "[markdown]": {
-    "editor.formatOnSave": false
-  },
-  "prettier.semi": false,
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "es5",
   "files.exclude": {
     "**/lib": true
   }

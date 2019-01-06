@@ -1,7 +1,7 @@
 import QueryUtilsBase from 'vendor/QueryUtilsBase'
 import SchemaUtils from 'vendor/SchemaUtils'
 import { parse, startOfMonth, endOfMonth } from 'date-fns'
-import { appRc } from 'vendor'
+import { config } from 'vendor'
 
 const DEFAULT_LIMIT = 10
 
@@ -98,4 +98,4 @@ class QueryUtils extends QueryUtilsBase {
   }
 }
 
-export default new SchemaUtils(QueryUtils, appRc.permissions)
+export default new SchemaUtils(QueryUtils, appRc.get('permissions'))
