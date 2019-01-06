@@ -19,7 +19,7 @@ const stateLink = withClientState({ cache, resolvers: local.resolvers, defaults:
 
 //const httpLink = createUploadLink({
 const httpLink = new BatchHttpLink({
-  uri: '/api/graphql',
+  uri: '/graphql',
 })
 
 const wsLink = new WebSocketLink({
