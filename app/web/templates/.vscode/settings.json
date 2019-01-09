@@ -4,7 +4,8 @@
   "[markdown]": {
     "editor.formatOnSave": false
   },
-  "prettier.semi": false,
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "es5"
+  "eslint.validate": [
+    "javascript", "javascriptreact",
+    "typescript", "typescriptreact"
+  ]
 }
