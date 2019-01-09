@@ -1,4 +1,7 @@
+// eslint-disable-next-line no-unused-vars
 declare function pd(...args: any[]): any
+
+// eslint-disable-next-line no-unused-vars
 declare function pdMobx(...args: any[]): any
 
 interface Obj<T = any> {
