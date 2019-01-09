@@ -1,6 +1,9 @@
 {
   "javascript.validate.enable": false,
   "editor.formatOnSave": true,
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
   "files.exclude": {
     "**/lib": true
   },
